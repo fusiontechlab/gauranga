@@ -1,0 +1,321 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <title>Admin Area</title> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminstyle.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <%- include('common/head/head.ejs') %>
+    <style>
+        .position_relative{
+            position:relative;
+            display: inline-block;
+        }
+        .img_delete{
+            position:absolute;
+            right:0px;
+            top:0px;
+            font-size: 20px;
+            background: #fff;
+            padding:4px;
+        }
+        .display_inline{
+            
+        }
+    </style>
+</head>
+
+<body class="hold-transition skin-yellow sidebar-mini">
+    <div class="wrapper">
+
+        <%- include('common/header/header.ejs') %>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <%- include('common/sidebar/sidebar.ejs') %>
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Edit Products
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Products</a></li>
+                            <li class="breadcrumb-item active">Edit Products</li>
+                        </ol>
+                    </section>
+
+
+                    <section class="content">
+
+                        <form method="post" action="/edit-product/<%= id %>" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="">Title</label>
+                                <input type="text" class="form-control" name="title" value="<%= title %>"
+                                    placeholder="Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea name="desc" class="form-control" cols="30" rows="5"
+                                    placeholder="Description"><%= desc %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for=""> long Description</label>
+                                <textarea name="longdesc" class="form-control" cols="30" rows="5"
+                                    placeholder=" Long Description"><%= longdesc %></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Category</label>
+                                <select name="category" class="form-control">
+                                    <% categories.forEach(function(cat){ %>
+                                        <option value="<%= cat.category %>" <% if (cat.category==category) { %>
+                                            selected="selected"
+                                            <% } %>
+                                                ><%= cat.category %>
+                                        </option>
+                                        <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Sub Category</label>
+                                <select name="subCategory" class="form-control">
+                                    <% subCategories.forEach(function(subcat){ %>
+                                        <option value="<%= subcat.subCategory %>" <% if
+                                            (subcat.subCategory==subCategory) { %>
+                                            selected="selected"
+                                            <% } %>
+
+
+
+
+                                                ><%= subcat.subCategory %>(<%= subcat.category %>)
+                                        </option>
+                                        <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="text" class="form-control" name="price" value="<%= price %>"
+                                    placeholder="<%= price %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="">code</label>
+                                <input type="text" class="form-control" name="code" value="<%= code %>"
+                                    placeholder="<%= code %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Offered</label>
+                                <input type="text" class="form-control" name="offered" value="<%= offered %>"
+                                    placeholder="<%= offered %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="">GST</label>
+                                <input type="text" class="form-control" name="gst" value="<%= gst %>"
+                                    placeholder="<%= gst %>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Tag</label>
+                                <input type="text" class="form-control" name="tag" value="<%= tag %>"
+                                    placeholder="Price">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Availability</label>
+                                <input type="text" class="form-control" name="availability" value="<%= availability %>"
+                                    placeholder="Availability">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Product Tag Name</label>
+                                <input type="text" class="form-control" name="attribute" value="<%= attribute %>"
+                                    placeholder="Enter your Product Tag Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Current Image</label>
+                                <p>
+                                    <% if (image=="" ) { %>
+                                        <img id="noimage" src="/images/noimage.png" alt="">
+                                        <% } else {%>
+                                            <img id="noimage" src="<%= image[0] %>" alt="">
+                                            <% } %>
+                                </p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Upload Image</label>
+                                <input type="file" class="form-control" name="file" id="img">
+                                <img src="#" id="imgPreview" alt="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Current Image</label>
+                                <div class="display_inline">
+                                    <% if (image=="" ) { %>
+                                        <div class="position_relative"><img id="noimage" src="/images/noimage.png" alt=""></div>
+                                        <% } else {%>
+                                        <% for(var i=1; i< 2; i++) {%>
+                                            <div class="position_relative">
+                                            <img id="noimage" src="<%= image[i] %>" alt="">
+                                            </div>
+
+                                            <% } } %>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Upload Image</label>
+                                <input type="file" class="form-control" name="file" id="img" >
+                                <img src="#" id="imgPreview" alt="">
+                            </div>
+                            <input type="hidden" name="pimage" value="<%= image %>">
+                            <input type="hidden" name="himage" value="<%= hover %>">
+                            <button class="btn btn-default">Submit</button>
+                        </form>
+                        <h3 class="page-header">Gallery</h3>
+
+                        <ul class="gallery">
+                            <% galleryImages.forEach(function(image){ %>
+                                <% if (image !="thumbs" ) { %>
+                                    <li>
+                                        <img src="<%= image.file %>" alt="" height="50px">&nbsp;
+                                        <a class="confirmDeletion" href="/delete-image/<%= image._id %>">delete</a>
+                                    </li>
+                                    <% } %>
+                                        <% }); %>
+                        </ul>
+
+                        <br><br>
+                        <form action="/product-gallery/<%= id %>" method="post" enctype="multipart/form-data"
+                            class="dropzone" id="dropzoneForm">
+                            <div class="fallback">
+                                <input type="file" name="file" multiple>
+                                <input type="submit" value="Upload">
+                            </div>
+                        </form>
+
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/basic.css" />
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.css" />
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.js"></script>
+                        <script>
+
+                            // Preview image
+                            function readURL(input) {
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function (e) {
+                                        $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+                                    }
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+
+                            $("#img").change(function () {
+                                readURL(this);
+                            });
+
+                            // Dropzone
+                            Dropzone.options.dropzoneForm = {
+                                acceptedFiles: "image/*",
+                                init: function () {
+                                    this.on("queuecomplete", function (file) {
+                                        setTimeout(function () {
+                                            location.reload()
+                                        }, 1000);
+                                    });
+                                }
+                            }
+
+                        </script>
+
+                        <style>
+                            .sorting tr:not(.home) {
+                                cursor: pointer;
+                            }
+
+                            .ui-state-hightlight {
+                                border: 1px dashed #ccc;
+                            }
+
+                            #imgPreview {
+                                margin: 20px;
+                            }
+
+                            #noimage {
+                                width: 100px;
+                                height: 100px;
+                            }
+
+                            ul.gallery {
+                                padding: 0;
+                            }
+
+                            ul.gallery li:first-child {
+                                margin-left: 0;
+                            }
+
+                            ul.gallery li {
+                                margin: 20px;
+                                display: inline-block;
+                                list-style: none;
+                            }
+
+                            table.alignmiddle td {
+                                vertical-align: middle !important;
+                            }
+                        </style>
+                    </section>
+
+                </div>
+
+
+
+
+
+                <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+                <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+    <!-- popper -->
+    <script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+    <!-- Bootstrap 4.0-->
+    <script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.min.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- Fab Admin App -->
+    <script src="/admin/cryptocurrency/js/template.js"></script>
+
+    <!-- Fab Admin for demo purposes -->
+    <script src="/admin/cryptocurrency/js/demo.js"></script>
+
+    <!-- Form validator JavaScript -->
+    <script src="/admin/cryptocurrency/js/pages/validation.js"></script>
+    <script>
+        ! function (window, document, $) {
+            "use strict";
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+        }(window, document, jQuery);
+    </script>
+
+</body>

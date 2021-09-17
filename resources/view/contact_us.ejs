@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include('common/header') %> 
+  <%- include('common/nav') %> 
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+            <li><strong>Contact Us</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+  
+  <!-- Main Container -->
+  <section class="main-container col1-layout">
+    <div class="main container">
+      <div class="row">
+        <section class="col-main col-sm-12">
+          <div id="contact" class="page-content page-contact">
+            <div class="page-title">
+              <h2>Contact Us</h2>
+            </div>
+            <% if (contact) { %>
+             <% contact.forEach(con => { %>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6" id="contact_form_map">
+                  <h3 class="page-subheading"><%= con.title %> </h3>
+                  <!-- <p>Lorem ipsum dolor sit amet onsectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor dapibus eget. Mauris tincidunt aliquam lectus sed vestibulum. Vestibulum bibendum suscipit mattis.</p>
+                  -->
+                  <br/>
+                  <ul>
+                    <li><i class="fa fa-circle"></i> <%= con.heading %>.</li>
+                    <li><i class="fa fa-circle"></i> Health and safety: My Staff wear masks.</li>
+                    <li><i class="fa fa-circle"></i> My all products are disinfect and safe · </li>
+                    
+                   
+                  </ul>
+                  <br/>
+                  <ul class="store_info">
+                    <li><i class="fa fa-home" style="font-weight: bold;"></i><span><a href="#" style="font-weight: bold;"><%= con.address %></a></span></li>
+                    <li><i class="fa fa-phone"></i>Phone: <span><a href="tel:9038631845 " target="_blank" style="font-weight: bolder;"> +<%= con.phone %></a></span></li>
+                    <li><i class="fa fa-phone"></i>Telephone: <span><a href="tel:9038631845 " target="_blank" style="font-weight: bolder;"> +<%= con.telephone %></a></span></li>
+                    <li><i class="fa fa-print"></i>Fax: <span><a href="tel:(033) 2532 9097" target="_blank" style="font-weight: bolder;"> +<%= con.fax %></a></span></li>
+                    <li><i class="fa fa-envelope"></i>Email: <span><a href="https://mail.google.com/mail/u/0/?tab=cm#inbox" target="_blank" style="font-weight: bold;"><%= con.email %></a></span></li>
+                  </ul>
+                </div>
+                <div class="col-sm-6">
+                  <h3 class="page-subheading">Make an enquiry</h3>
+                  <form action="/contact" method="post">
+                  <div class="contact-form-box">
+                    <div class="form-selector">
+                      <label>Name</label>
+                      <input type="text" class="form-control input-sm" name= "name" id="name" />
+                    </div>
+                    <div class="form-selector">
+                      <label>Email</label>
+                      <input type="text" class="form-control input-sm"  name = "email" id="email" />
+                    </div>
+                    <div class="form-selector">
+                      <label>Phone</label>
+                      <input type="text" class="form-control input-sm" name = "phone" id="phone" />
+                    </div>
+                    <div class="form-selector">
+                      <label>Message</label>
+                      <textarea class="form-control input-sm" rows="10"  name = "message" id="message"></textarea>
+                    </div>
+                    <div class="form-selector">
+                      <button class="button"><i class="icon-paper-plane icons"></i>&nbsp; <span>Send Message</span></button>
+                      </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            <% }) %>
+            <% } %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+  <!-- Main Container End --> 
+   <!-- service section -->
+  <div class="jtv-service-area">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper ship">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-paper-plane"></i></div>
+              <div class="service-wrapper">
+                <h3>World-Wide Shipping</h3>
+                <p>On order over <i class="fa fa-rupee"></i> 99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12 ">
+          <div class="block-wrapper return">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-rotate-right"></i></div>
+              <div class="service-wrapper">
+                <h3>100% secure payments</h3>
+                <p>Credit/ Debit Card/ Banking </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper support">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
+              <div class="service-wrapper">
+                <h3>Support 24/7</h3>
+                <p>Call us: 9038631845 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper user">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
+              <div class="service-wrapper">
+                <h3>Member Discount</h3>
+                <p>25% on order over <i class="fa fa-rupee"></i> 199</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+
+<!-- JS --> 
+
+<!-- jquery js --> 
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="js/revolution-slider.js"></script> 
+<script type="text/javascript" src="js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="js/countdown.js"></script>
+</body>
+
+</html>

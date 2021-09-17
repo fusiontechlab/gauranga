@@ -1,0 +1,119 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Area</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminstyle.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+<h2 class="page-title">Add a product</h2>
+<a href="/admin/products" class="btn btn-primary">Back to all products</a>
+<br><br>
+
+<form method="post" action="add-product" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Description</label>
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="">Category</label>
+        <select name="category" class="form-control">
+            <% categories.forEach(function(cat){ %>
+                <option value="<%= cat.category %>"><%= cat.category %></option>
+            <% }); %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for=""> Sub Category</label>
+        <select name="subCategory" class="form-control">
+            <% subcategory.forEach(function(subcat){ %>
+                <option value="<%= subcat.subCategory %>"><%= subcat.subCategory %>(<%= subcat.category %> )</option>
+            <% }); %>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Price</label>
+        <input type="text" class="form-control" name="price" value="<%= price %>" placeholder="Price">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Image</label>
+        <input type="file" class="form-control" name="image" id="img">
+        <input type="file" class="form-control" name="hover" id="img">
+        <img src="#" id="imgPreview" alt="">
+    </div>
+
+
+    
+    <button class="btn btn-default">Submit</button>
+</form>
+
+<script>
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#img").change(function() {
+        readURL(this);
+    });
+    
+</script>
+<style>
+
+.sorting tr:not(.home) {
+    cursor: pointer;
+}
+
+.ui-state-hightlight {
+    border: 1px dashed #ccc;
+}
+
+#imgPreview {
+    margin: 20px;
+}
+
+#noimage {
+    width: 100px;
+    height: 100px;
+}
+
+ul.gallery {
+    padding: 0;
+}
+
+ul.gallery li:first-child {
+    margin-left: 0;
+}
+
+ul.gallery li {
+    margin: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+table.alignmiddle td {
+    vertical-align: middle !important;
+}
+</style>

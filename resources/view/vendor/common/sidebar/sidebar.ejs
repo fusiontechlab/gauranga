@@ -1,0 +1,76 @@
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar">
+      
+      <!-- sidebar menu-->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="user-profile treeview">
+          <a href="index.html">
+			<img src="/admin/images/user5-128x128.jpg" alt="user">
+            <span>Vendor</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <% if (user.user_type === "vendor") { %>
+                <li><a href="javascript:void()"><i class="fa fa-user mr-5"></i><%=user.email%></a></li>
+                <% } else { %>
+                  <li><a href="javascript:void()"><i class="fa fa-user mr-5"></i>vendor</a></li>
+                  <% } %>
+          <li><a href="/vendorProfile"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
+          <% if (user.user_type === "vendor") { %>
+            <li><a href="/vendorLogout"><i class="fa fa-power-off mr-5"></i>Logout</a></li>
+         <% } else { %>
+          <li><a href="/vendor"><i class="fa fa-power-off mr-5"></i>Login</a></li>
+         <% } %>
+          
+              </ul>
+        </li>
+        <li class="header nav-small-cap">PERSONAL</li>
+        <li class="active">
+          <a href="/vendor/index">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+       
+      
+       
+       
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Products</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/productList"><i class="fa fa-circle-thin"></i>Product List</a></li>
+            <li><a href="/vendor-product"><i class="fa fa-circle-thin"></i>Add Product</a></li>
+
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Ordered </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/vendorOrder"><i class="fa fa-circle-thin"></i>All Ordered List</a></li>
+           
+          </ul>
+        </li>		
+		
+        
+          
+        
+      </ul>
+    </section>
+  </aside>

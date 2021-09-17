@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('common/head/head.ejs') %>
+
+  <body class="hold-transition skin-yellow sidebar-mini">
+    <div class="wrapper">
+
+      <%- include('common/header/header.ejs') %>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <%- include('common/sidebar/sidebar.ejs') %>
+
+          <!-- Content Wrapper. Contains page content -->
+          <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <h1>
+                Rating List
+              </h1>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/index"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#">rating</a></li>
+                <li class="breadcrumb-item active">rating-list</li>
+              </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+              <div class="row">
+
+                <div class="col-12">
+
+                  <div class="box">
+                    <div class="box-header with-border">
+                      <!-- <h3 class="box-title">Individual column searchinggg</h3> -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="table-responsive">
+
+
+                        <table id="example" class="table table-bordered table-striped" style="width:100%">
+                          <thead style="color: rgb(119, 86, 86);">
+                            <tr>
+                              <th>quality</th>
+                              <th>price</th>
+                              <th>value</th>
+                              <th> name </th>
+                              <th>customer email</th>
+                              <th>product Id</th>
+                              <th> Edit </th>
+
+                              <th> Delete </th>
+
+                            </tr>
+                          </thead>
+                          <% if (count> 0) { %>
+                            <tbody>
+                              <% rating.forEach(function(rating){ %>
+                                <tr>
+                                  <td>
+                                    <%= rating.quality %>
+                                  </td>
+                                  <td>
+                                    <%= rating.price %>
+                                  </td>
+                                  <td>
+                                    <%= rating.value %>
+                                  </td>
+                                  <td>
+                                    <%= rating.name %>
+                                  </td>
+
+                                  <th>
+                                    <%= rating.userId.email %>
+                                  </th>
+
+                                  <th>
+                                    <%=rating.productId %>
+                                  </th>
+
+                                  <td><a class="btn btn-success btn-xs" href="/edit-rating/<%= rating._id %>">Edit</a>
+                                  </td>
+
+
+
+                                  <td><a class="btn btn-danger btn-xs"
+                                      href="/delete-rating/<%= rating._id %>">Delete</a></td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                            <% } else {%>
+                              <h3 class="text-center">There are no rating.</h3>
+                              <% }%>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+
+          <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+          <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- FastClick -->
+    <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- jQuery 3 -->
+    <script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+    <!-- popper -->
+    <script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+    <!-- Bootstrap 4.0-->
+    <script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.js"></script>
+
+    <!-- webticker -->
+    <script src="/admin/assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js"></script>
+
+    <!--amcharts charts -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+    <!-- This is data table -->
+    <script src="/admin/assets/vendor_components/datatable/datatables.min.js"></script>
+
+    <!-- Slimscroll -->
+    <script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- FastClick -->
+    <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+
+    <!-- Fab Admin App -->
+    <script src="/admin/cryptocurrency/js/template.js"></script>
+
+    <!-- Fab Admin dashboard demo (This is only for demo purposes) -->
+    <script src="/admin/cryptocurrency/js/pages/dashboard.js"></script>
+
+    <!-- Fab Admin for demo purposes -->
+    <script src="/admin/cryptocurrency/js/demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+
+      $(document).ready(function () {
+        $('#example').DataTable();
+      });
+    </script>
+
+
+  </body>
+
+</html>

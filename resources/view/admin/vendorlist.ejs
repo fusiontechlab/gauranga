@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('common/head/head.ejs') %>
+
+	<body class="hold-transition skin-yellow sidebar-mini">
+		<div class="wrapper">
+
+			<%- include('common/header/header.ejs') %>
+
+				<!-- Left side column. contains the logo and sidebar -->
+				<%- include('common/sidebar/sidebar.ejs') %>
+
+					<!-- Content Wrapper. Contains page content -->
+					<div class="content-wrapper">
+						<!-- Content Header (Page header) -->
+						<section class="content-header">
+							<h1>
+								Vendor-List
+							</h1>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/admin/index"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li class="breadcrumb-item"><a href="#">vendor</a></li>
+								<li class="breadcrumb-item active">vendor-list</li>
+							</ol>
+						</section>
+
+						<!-- Main content -->
+						<section class="content">
+							<div class="row">
+
+								<div class="col-12">
+
+									<div class="box">
+										<div class="box-header with-border">
+											<!-- <h3 class="box-title">Individual column searching</h3> -->
+										</div>
+										<!-- /.box-header -->
+										<div class="box-body">
+											<div class="table-responsive">
+
+
+												<table id="example" class="table table-bordered table-striped"
+													style="width:100%">
+													<thead style="color: rgb(119, 86, 86);">
+														<tr>
+															<th> First Name</th>
+															<th> Last Name</th>
+															<th> Email</th>
+															<th>phone</th>
+															<th>store</th>
+															<th>pan</th>
+															<!-- <th>address</th>
+	   <th>city</th> -->
+
+															<th>User Type</th>
+															<th>Document</th>
+															<th>Status</th>
+															<th>Edit</th>
+															<th>Delete</th>
+
+
+														</tr>
+													</thead>
+													<tbody>
+														<h1><b>Vendor details</b></h1>
+														<%if(vendor.length>0){ %>
+															<%for(let d of vendor) {%>
+																<tr>
+																	<td>
+																		<%=d.fname%>
+																	</td>
+																	<td>
+																		<%=d.lname%>
+																	</td>
+																	<td>
+																		<%=d.email%>
+																	</td>
+																	<td>
+																		<%=d.phone%>
+																	</td>
+																	<td>
+																		<%=d.store%>
+																	</td>
+																	<td>
+																		<%=d.pan%>
+																	</td>
+
+
+
+																	<td>
+																		<%=d.user_type%>
+																	</td>
+															<td> 
+																<% if(d.document.length != 0){ %>
+	<% if(d.document[0]){ %>
+	<a class="btn btn-rounded btn-sm btn-primary mb-1" href="<%= d.document[0] %>" target="pdf-frame">doc 1 View</a>
+	<% }if(d.document[1]){ %>
+	<a class="btn btn-rounded btn-sm btn-info" href="<%= d.document[1] %>" target="pdf-frame">doc 2 View</a>
+	<% } %>	
+																<% }else{ %>
+																No Document
+																	<% }%>
+																
+																
+																</td>
+
+																	<% if (d.status==true) { %>
+																		<td> <button type="button"
+																				class="btn btn-rounded btn-sm btn-success"><a
+																					href="/statusUser/<%=d._id%>">Active</a></button>
+																		</td>
+
+																		<% } else{%>
+																			<td> <button type="button"
+																					class="btn btn-rounded btn-sm btn-success"><a
+																						href="/statusUsers/<%=d._id%>">Deactive</a></button>
+																			</td>
+																			<%}%>
+
+
+																				<td> 
+																					<!-- <button type="button"
+																						class="btn btn-rounded btn-sm btn-success"><a
+																							href="/editUser/<%=d._id%>?edit=true">Edit</a></button> -->
+																							 
+																							<button type="button"
+																							class="btn btn-rounded btn-sm btn-success"><a
+																								href="/vendor_edit/<%=d._id%>?edit=true">Edit</a></button>
+																			
+																						</td>
+																				<td> <button type="button"
+																						class="btn btn-rounded btn-sm btn-danger"><a
+																							href="/deleteUser/<%=d._id%>">Delete</a></button>
+																				</td>
+																</tr>
+																<%}%>
+																	<%} else{%>
+																		<h1> not found</h1>
+																		<% } %>
+
+													</tbody>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+
+
+
+
+					<!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+					<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- FastClick -->
+		<script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+		<!-- jQuery 3 -->
+		<script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+		<!-- popper -->
+		<script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+		<!-- Bootstrap 4.0-->
+		<script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.js"></script>
+
+		<!-- webticker -->
+		<script src="/admin/assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js"></script>
+
+		<!--amcharts charts -->
+		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+		<!-- This is data table -->
+		<script src="/admin/assets/vendor_components/datatable/datatables.min.js"></script>
+
+		<!-- Slimscroll -->
+		<script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+		<!-- FastClick -->
+		<script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+
+		<!-- Fab Admin App -->
+		<script src="/admin/cryptocurrency/js/template.js"></script>
+
+		<!-- Fab Admin dashboard demo (This is only for demo purposes) -->
+		<script src="/admin/cryptocurrency/js/pages/dashboard.js"></script>
+
+		<!-- Fab Admin for demo purposes -->
+		<script src="/admin/cryptocurrency/js/demo.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+		<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+
+		<script>
+
+			$(document).ready(function () {
+				$('#example').DataTable();
+			});
+		</script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,182 @@
+<nav class="custom_navsection">
+  <div class="container">
+    <div class="row">
+       
+      <div class="col-md-3 col-sm-3 col-xs-12 jtv-logo-block">
+          <div class="mm-toggle-wrap">
+              <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
+              <span class="mm-label hidden">Categories</span> </div>
+            
+              <!-- Header Logo -->
+              <div class="logo"><a title="e-commerce" href="/"><img alt="GOURANGA PAUL" title="GOURANGA PAUL" src="/logo.png"><span>Gouranga Paul <span>Group</span></span></a> </div>
+      </div>
+          
+      <div class="col-md-2 col-sm-1 mega-container mr_top">
+        <div class="navleft-container">
+          <div class="mega-menu-title hidden-xs">
+            <h3><span class="hidden-sm">All Brands</span></h3>
+          </div>
+          <!-- Shop by category -->
+          <div class="mega-menu-category">
+            <ul class="nav">
+              <% if (data) { %>
+               <% for( let index = 0; index < data.length; index++ ) { %>
+                
+                <li><a href="#"><%=data[index].category %> </a>
+                  <div class="wrap-popup column1">
+                    <div class="popup">
+                      <ul class="nav">
+                        <% for( let jndex = 0; jndex < data[index].category_info.length; jndex++ ) { %>
+                          <li><a href="/shop_grid/<%=data[index].category_info[jndex].category %>/<%=data[index].category_info[jndex].subCategory %>"><span><%=data[index].category_info[jndex].subCategory %></span></a></li>
+                          
+                         <% } %>
+                      
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <% } %>
+               
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-7 mr_top">
+        <div class="mtmegamenu">
+          <ul class="hidden-xs">
+            <li class="mt-root demo_custom_link_cms">
+              <div class="mt-root-item"><a href="/">
+                <div class="title title_font"><span class="title-text">Home</span></div>
+                </a></div>
+            </li>
+            <li class="mt-root">
+              <div class="mt-root-item"><a href="#">
+                <div class="title title_font"><span class="title-text">Our Products</span></div>
+                  </a></div>
+                  <ul class="menu-items col-xs-12">
+                  
+                   
+                  
+                    <% for( let index = 0; index < data.length; index++ ) { %>
+                      <li class="menu-item depth-1 menucol-1-4 ">
+                    <div class="title title_font"> <a href="#"><%=data[index].category %></a></div>
+                    <ul class="submenu">
+                      <li class="menu-item">
+                        <% for( let jndex = 0; jndex < data[index].category_info.length; jndex++ ) { %>
+                          <div class="title"> <a href="/shop_grid/<%=data[index].category_info[jndex].category %>/<%=data[index].category_info[jndex].subCategory %>"><%=data[index].category_info[jndex].subCategory %></a></div>
+                          
+                         <% } %>
+                        
+                      </li>
+                     
+                    </ul>
+                  </li>
+                  <% } %>
+                  <% } %>
+                    
+                  </ul>
+            </li>
+            <li class="mt-root">
+              <div class="mt-root-item"><a href="/arrival">
+                <div class="title title_font"><span class="title-text">New Arrivals</span> </div>
+                </a></div>
+            </li>
+             <li class="mt-root">
+              <div class="mt-root-item"><a href="/popular">
+                <div class="title title_font"><span class="title-text">Most Popular</span> </div>
+                </a></div>
+            </li>
+             <li class="mt-root">
+              <div class="mt-root-item"><a href="/about_us">
+                <div class="title title_font"><span class="title-text">About Us</span> </div>
+                </a></div>
+            </li>
+            <li class="mt-root">
+              <div class="mt-root-item"><a href="/contact_us">
+                <div class="title title_font"><span class="title-text">Contact Us</span> </div>
+                </a></div>
+            </li>
+          </ul>
+          <div class="search_web">
+              <button class="search_btn" type="button"><i class="fa fa-search"></i></button>
+              <div class="search_section">
+                  <form action="/seach" id="searchName" method="POST">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search for product..." name="search">
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="jtv-top-search search_mobile"> 
+            <!-- Search -->
+            <div class="top-search">
+                <div id="search">
+                    <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for product..." name="search">
+                    <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+                </div>
+                
+            </div>
+            <!-- End Search --> 
+          </div>
+          <!-- top cart -->
+          <div class="top-cart-contain">
+            <div class="mini-cart">
+              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#">
+                <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
+
+<!-- 
+                <div class="shoppingcart-inner hidden-xs"><span class="cart-title">Cart</span> <span class="cart-total"><% if (typeof cart !== "undefined") { %>
+                  <%= cart %>
+                  <% } else {%>
+                  0
+                  <% } %></span></div> -->
+
+
+
+                </a></div>
+              <div>
+                <% if (cart) { %>
+                  <div class="top-cart-content">
+                    <div class="block-subtitle hidden">Recently added items</div>
+                    <ul id="cart-sidebar" class="mini-products-list">
+                 
+                      <% var total = 0; %>
+                      <% cart.forEach(p => { %>
+                        <% var sub = parseFloat(p.qty * p.price).toFixed(2) %>
+                        <% total += +sub %> 
+                        <li class="item odd"> 
+                          <a href="/shopping_cart" title="Product title here" class="product-image">
+                            <img src="<%= p.image[0] %>" alt="" width="65">
+                          </a>
+                         
+                          <div class="product-details"> <a href="/update/<%= p.title %>/<%= p.color %>/<%= p.size %>?action=clear" title="Remove This Item" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                            <p class="product-name"><a href="/shopping_cart"><%= p.title %> </a> </p>
+                            <strong> <%= p.qty %></strong> x <span class="price"><i class="fa fa-rupee"></i> <%= p.price %></span> </div>
+                        </li>
+                       <% }) %> 
+                      </ul>
+                    
+                      
+                      </ul>
+                      
+                    
+                   
+                    <div class="top-subtotal">Subtotal: <span class="price"><i class="fa fa-rupee"></i><%= parseFloat(total).toFixed(2) %></span></div>
+                    <div class="actions">
+                      <button class="btn-checkout" type="button" onClick="location.href='/checkout'"><i class="fa fa-check"></i><span>Checkout</span></button>
+                      <button class="view-cart" type="button" onClick="location.href='/shopping_cart'"><i class="fa fa-shopping-cart"></i><span>View Cart</span></button>
+                    </div>
+                  </div>
+                  <% } %>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

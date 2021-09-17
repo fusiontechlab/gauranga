@@ -1,0 +1,545 @@
+<%- include('common/header') %>
+  <%- include('common/nav') %>
+
+    <section class="hero-slider hero-slider-s2">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <% if (banner) { %>
+           <% banner.forEach(slideimage => { %>
+            <div class="swiper-slide">
+              <div class="slide-inner slide-bg-image" data-background="<%= slideimage.file %> ">
+                <!-- <div class="slide-inner slide-bg-image" data-background="/images/s6w.jpg"> -->
+  
+              </div> <!-- end slide-inner -->
+            </div>
+           <% }) %> 
+          <% } %>
+         
+
+          <!-- <div class="swiper-slide">
+            <div class="slide-inner slide-bg-image" data-background="/images/s7.jpg">
+
+            </div> 
+          </div>  -->
+
+          <!-- <div class="swiper-slide">
+            <div class="slide-inner slide-bg-image" data-background="/images/s6w.jpg">
+
+            </div> 
+         
+        </div> -->
+      
+        <!-- swipper controls -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- BANNER-AREA-START -->
+    <section class="banner-area banner-are1a">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="banner-block banner-block1">
+              <a href="/shopCategory/GOURANGA PAUL"> <img src="/logo.png" alt="banner collection"> </a>
+              <div class="text-des-container">
+                <div class="text-des">
+                  <h2>GOURANGA PAUL</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="banner-block banner-block1">
+              <a href="/shopCategory/RUPVATI"> <img src="/images/logo/RUPVATI1.jpg" alt="banner collection"> </a>
+              <div class="text-des-container">
+                <div class="text-des">
+                  <h2>Rupvati</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="banner-block banner-block1">
+              <a href="/shopCategory/FAIR FORM"> <img src="/images/logo/Fairform.png" alt="banner collection"> </a>
+              <div class="text-des-container">
+                <div class="text-des">
+                  <h2>Fair Form </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="banner-block banner-block1">
+              <a href="/shopCategory/RUDRAPAUL"> <img src="/images/logo/RUDRAPAUL_LOGO.png" alt="banner collection">
+              </a>
+              <div class="text-des-container">
+                <div class="text-des">
+                  <h2>RUDRAPAUL</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- BANNER-AREA-END -->
+
+    <!-- All products-->
+
+    <div class="container">
+      <div class="home-tab">
+        <div class="tab-title text-center">
+          <h2>Most Popular</h2>
+        </div>
+        <div class="title-divider"><span></span></div>
+        <p class="sub-title text-center">popular products go for shopping.</p>
+
+        <div class="featured-pro">
+          <div class="slider-items-products">
+            <div id="all-slider" class="product-flexslider hidden-buttons">
+
+              <div class="slider-items slider-width-col4">
+                <% if (popular) { %>
+
+
+                  <% popular.forEach(p=> { %>
+
+                    <div class="product-item">
+                      <div class="item-inner">
+                        <div class="product-thumbnail">
+
+
+                          <div class="pr-img-area"> <a title="<%= p.title %> " href="/single_product/<%=p._id%>">
+                            
+                              <figure>
+                                <img class="first-img" src="<%= p.image[0]%>" alt=" ">
+                                <img class="hover-img" src="<%=p.image[1]%>" alt=" ">
+                              </figure> 
+                            </a> </div>
+
+                          <div class="pr-info-area">
+                            <div class="pr-button">
+                              <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/<%=p._id%>"> <i
+                                    class="pe-7s-like"></i> </a> </div>
+                              <div class="mt-button add_to_compare"> <a href="/single_product/<%=p._id%>"> <i class="fa 
+
+fa-eye"></i> </a> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title"> <a title="Product title here">
+                                <%= p.title %> <span>(#<%= p.code %> )</span>
+                              </a>
+                            
+                            </div>
+                    
+
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-
+
+o"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">
+                                      <i class="fa fa-rupee"></i><%= p.tag %>
+                                    </span> </span> </div>
+                              </div>
+                              <div class="pro-action">
+
+                                <a href="/cart/add/<%=p._id%>"> <button type="button" class="add-to-cart"> <i class="fa 
+
+fa-shopping-bag"></i><span> Add to Cart</span> </button></a>
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <% }) %>
+                      <% }else{ %>
+                        <p>procuct not available</p>
+                        <%}%>
+
+                          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inner-box">
+      <div class="container">
+        <div class="row">
+          <!-- Banner -->
+          <div class="col-md-3 top-banner hidden-sm">
+            <div class="jtv-banner3">
+              <div class="jtv-banner3-inner"><a href="shop_grid"><img src="/images/mask3.png" alt=" "></a>
+                <div class="hover_content">
+                  <div class="hover_data">
+                    <div class="title"> New Normal </div>
+                    <div class="desc-text">Season On Sale</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Best Sale -->
+          <div class="col-sm-12 col-md-9 jtv-best-sale">
+            <div class="jtv-best-sale-list">
+              <div class="wpb_wrapper">
+                <div class="best-title text-left">
+                  <h2>New Arrival</h2>
+                </div>
+                <p class="sub-title text-left">latest Product</p>
+              </div>
+              <div class="slider-items-products">
+                <div id="jtv-best-sale-slider" class="product-flexslider">
+                  <div class="slider-items">
+
+                    <ul class="products-grid">
+                      <% if (products) { %>
+                        <% products.forEach(products=> { %>
+                        <li class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="item-inner">
+                            <div class="item-img">
+
+                              <a class="product-image" title="Retis lapen casen"
+                                href="/single_product/<%= products.id %>"> <img alt=" " src="<%= products.image[0] %>">
+                              </a>
+                            </div>
+                            <div class="item-info">
+
+                              <div class="info-inner">
+                                <div class="item-title"> <a title="Product title here" href="single_product">
+                                    <%= products.title %>
+                                  </a> </div>
+                                <div class="product_code"><span>(#<%= products.code %> )</span></div>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price"><i
+                                          class="fa fa-rupee"></i><%= products.tag %>
+                                      </span> </span> </div>
+                                </div>
+                                <div class="pro-action">
+                                  <a href="/cart/add/<%= products.id %>"><button type="button" class="add-to-cart"> <i
+                                        class="fa fa-shopping-bag"></i><span> Add to Cart</span></button></a>
+
+                                </div>
+                                <div class="pr-button-hover">
+                                  <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/<%=products._id%>"> <i
+                                        class="fa fa-heart-o"></i> </a> </div>
+                                  <div class="mt-button add_to_compare"> <a href="/single_product/<%= products.id %>">
+                                      <i class="fa fa-eye"></i> </a> </div>
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </li>
+                        <% }) %>
+                        <% } %>
+
+                    </ul>
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="banner-area">
+      <div class="container">
+        <div class="row">
+          <% if (puja) { %>
+           <% puja.forEach(element => { %>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="banner-block"> <a href="/pujacollection"> <img src="<%= element.bannerimage %> " alt="banner collection"> </a>
+                <div class="text-des-container">
+                  <div class="text-des">
+                    <h2><%= element.title %> </h2>
+                    <p><%= element.heading %> </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+           <% }) %>
+          <% } %>
+          
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="home-tab">
+        <div class="tab-title text-center">
+          <h2>Top Rated Products</h2>
+        </div>
+        <div class="title-divider"><span></span></div>
+        <p class="sub-title text-center">Most Qualified Product</p>
+
+        <div class="featured-pro">
+          <div class="slider-items-products">
+            <div id="all-slider" class="product-flexslider hidden-buttons">
+              <div class="slider-items slider-width-col4">
+
+
+
+
+
+
+
+                <% if (rating) { %>
+
+
+                  <% rating.forEach(p=> { %>
+
+                    <div class="product-item">
+                      <div class="item-inner">
+                        <div class="product-thumbnail">
+
+
+                          <div class="pr-img-area"> <a title="<%= p.title %> " href="/single_product/<%=p._id%>">
+                              <figure>
+                                <img class="first-img" src="<%= p.image[0]%>" alt=" ">
+                                <img class="hover-img" src="<%=p.image[1]%>" alt=" ">
+                              </figure>
+                            </a> </div>
+
+                          <div class="pr-info-area">
+                            <div class="pr-button">
+                              <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/<%=p._id%>"> <i
+                                    class="pe-7s-like"></i> </a> </div>
+                              <div class="mt-button add_to_compare"> <a href="/single_product/<%=p._id%>"> <i class="fa 
+  
+  fa-eye"></i> </a> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title"> <a title="Product title here">
+                                <%= p.title %> <span>(#<%= p.code %> )</span>
+                              </a>
+
+                            </div>
+
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star-"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">
+                                  <i class="fa fa-rupee"></i><%= p.tag %>
+                                    </span> </span> </div>
+                              </div>
+                              <div class="pro-action">
+
+                                <a href="/cart/add/<%=p._id%>"> <button type="button" class="add-to-cart"> <i class="fa 
+  
+  fa-shopping-bag"></i><span> Add to Cart</span> </button></a>
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <% }) %>
+                      <% }else{ %>
+                        <p>procuct not available</p>
+                        <%}%>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-static">
+      <div class="container">
+        <div class="row">
+          <!-- Customers Box -->
+          <div class="col-sm-12 col-xs-12">
+            <div class="testimonials">
+              <div class="page-title text-center">
+                <h2>What Our Customers Say</h2>
+              </div>
+              <div class="title-divider"><span></span></div>
+              <div class="slider-items-products">
+                <div id="testimonials-slider" class="product-flexslider hidden-buttons home-testimonials">
+                  <div class="slider-items slider-width-col4 ">
+                    <% if (feedback) { %>
+                     <% feedback.forEach(r => { %>
+                      <div class="holder">
+                        <blockquote>  <%= r.summary %></blockquote>
+                        <div class="thumb"> <img src="/images/testimonials-img2.jpg" alt="testimonials img"> </div>
+                        <div class="holder-info"> <strong class="name" ><%=r.name%></strong> <strong class="designation"> <%= r.review %></strong></div>
+                      </div>
+                     <% }) %>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- our clients Slider -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <div class="our-clients">
+            <div class="slider-items-products">
+              <div id="our-clients-slider" class="product-flexslider hidden-buttons">
+                <div class="slider-items slider-width-col6">
+                  <div class="item"><a href="#"><img src="/images/logo/BLOUSE_LABEL_LOGO.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/logo/Fairform.png" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/logo/RUDRAPAUL_LOGO.png" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b1.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b2.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b3.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b4.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b5.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b6.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b7.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b2.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b3.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b4.jpg" alt="Image"></a> </div>
+                  <div class="item"><a href="#"><img src="/images/b5.jpg" alt="Image"></a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <%- include('common/footer') %>
+      <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+
+      <!-- End Footer -->
+      </div>
+
+      <!-- JS -->
+
+      <!-- jquery js -->
+      <script src="//code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>"
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script src="/js/jquery-plugin-collection.js"></script>
+      <!-- bootstrap js -->
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+      <!-- Slider Js -->
+      <script type="text/javascript" src="/js/revolution-slider.js"></script>
+      <script type="text/javascript" src="/js/revolution-extension.js"></script>
+      <!-- owl.carousel.min js -->
+      <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+
+      <!-- jquery.mobile-menu js -->
+      <script type="text/javascript" src="/js/mobile-menu.js"></script>
+
+      <!--jquery-ui.min js -->
+      <script type="text/javascript" src="/js/jquery-ui.js"></script>
+
+      <!-- main js -->
+      <script type="text/javascript" src="/js/main.js"></script>
+      <script type="text/javascript" src="/js/app.js"></script>
+
+      <!-- countdown js -->
+      <script type="text/javascript" src="/js/countdown.js"></script>
+      <script>
+            // $(window).on('load', function() { // makes sure the whole site is loaded 
+            //   $('#status').fadeOut(); // will first fade out the loading animation 
+            //   $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+            //   $('body').delay(350).css({'overflow':'visible'});
+            // })
+      </script>
+
+      <script>
+        // SLIDER
+        var menu = [];
+        jQuery('.swiper-slide').each(function (index) {
+          menu.push(jQuery(this).find('.slide-inner').attr("data-text"));
+        });
+        var interleaveOffset = 0.5;
+        var swiperOptions = {
+          loop: true,
+          speed: 1000,
+          parallax: true,
+          autoplay: {
+            delay: 6500,
+            disableOnInteraction: false,
+          },
+          watchSlidesProgress: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            progress: function () {
+              var swiper = this;
+              for (var i = 0; i < swiper.slides.length; i++) {
+                var slideProgress = swiper.slides[i].progress;
+                var innerOffset = swiper.width * interleaveOffset;
+                var innerTranslate = slideProgress * innerOffset;
+                swiper.slides[i].querySelector(".slide-inner").style.transform =
+                  "translate3d(" + innerTranslate + "px, 0, 0)";
+              }
+            },
+            touchStart: function () {
+              var swiper = this;
+              for (var i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = "";
+              }
+            },
+            setTransition: function (speed) {
+              var swiper = this;
+              for (var i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = speed + "ms";
+                swiper.slides[i].querySelector(".slide-inner").style.transition =
+                  speed + "ms";
+              }
+            }
+          }
+        };
+        var swiper = new Swiper(".swiper-container", swiperOptions);
+        // DATA BACKGROUND IMAGE
+        var sliderBgSetting = $(".slide-bg-image");
+        sliderBgSetting.each(function (indx) {
+          if ($(this).attr("data-background")) {
+            $(this).css("background-image", "url(" + $(this).data("background") + ")");
+          }
+        });
+      </script>
+
+
+
+      </body>
+
+      </html>

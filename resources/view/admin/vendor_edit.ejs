@@ -1,0 +1,247 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <title>Admin Area</title> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminstyle.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <%- include('common/head/head.ejs') %>
+</head>
+
+<body class="hold-transition skin-yellow sidebar-mini">
+    <div class="wrapper">
+
+        <%- include('common/header/header.ejs') %>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <%- include('common/sidebar/sidebar.ejs') %>
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            edit-vendor
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/index"><i class="fa fa-dashboard"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#">vendor</a></li>
+                            <li class="breadcrumb-item active">edit-vendor</li>
+                        </ol>
+                    </section>
+
+                    <div></div><br /><br />
+                    <section class="main-container col1-layout">
+                        <div class="main container">
+                            <div class="page-content">
+                                <div class="account-login">
+                                    <div class="col-md-3 col-sm-2"></div>
+                                    <div class="col-md-6 col-sm-8">
+                                        <div class="single-input p-bottom50 clearfix">
+
+                                            <%if(error){%>
+                                                <%for(let e of error){%>
+                                                    <center>
+                                                        <p style="font-size: xx-large; color:red;">
+                                                            <%=e.msg%>
+                                                        </p>
+                                                    </center>
+                                                    <%} %>
+                                                        <%} %>
+                                                            <%if(!error){%>
+                                                                <%if(message.length>0){%>
+                                                                    <div class="alert alert-success">
+                                                                        <strong>
+                                                                            <%- message %> !
+                                                                        </strong>
+
+                                                                        <%} %>
+                                                                            <%} %>
+
+
+
+                                                                                <form
+                                                                                    action="<% if(editable) {%> /vendor_update<% }else {%>/register_auth <%}%>"
+                                                                                    method="post">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <div class="check-title">
+                                                                                                <!-- <h4>New Customer</h4> -->
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>First Name:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="fname"
+                                                                                                    value="<% if(editable) {%> <%=data.fname%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>Last Name:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="lname"
+                                                                                                    value="<% if(editable) {%> <%=data.lname%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-12">
+                                                                                            <label>Email:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="email"
+                                                                                                    name="email"
+                                                                                                    value="<% if(editable) {%> <%=data.email%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <!-- <div class="col-xs-12">
+                                        <label>Password:</label>
+                                        <div class="input-text">
+                                          <input type="password" name="password" 
+                                          value="<% if(editable) {%> <%=data.password%> <%} %>"
+                                          class="form-control">
+                                        </div>
+                                      </div> -->
+                                                                                        <div class="col-xs-12">
+                                                                                            <label>Address:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="address"
+                                                                                                    value="<% if(editable) {%> <%=data.address%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-xs-12">
+                                                                                            <label>Pan-Card-Number:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="pan"
+                                                                                                    value="<% if(editable) {%> <%=data.pan%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>City/Town:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="city"
+                                                                                                    value="<% if(editable) {%> <%=data.city%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>Store:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="store"
+                                                                                                    value="<% if(editable) {%> <%=data.store%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>UserType:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="user_type"
+                                                                                                    value="<% if(editable) {%> <%=data.user_type%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-6">
+                                                                                            <label>Phone:</label>
+                                                                                            <div class="input-text">
+                                                                                                <input type="text"
+                                                                                                    name="phone"
+                                                                                                    value="<% if(editable) {%> <%=data.phone%> <%} %>"
+                                                                                                    class="form-control">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xs-12">
+                                                                                            <!--  <div class="billing-checkbox">
+                                          <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+                                          Sign up for our newsletter! </div> -->
+                                                                                            <div class="submit-text"
+                                                                                                style="margin-top: 10px;">
+                                                                                                <input type="hidden"
+                                                                                                    name="id"
+                                                                                                    value="<%if(editable){%><%=data._id%><%}%>">
+                                                                                                <% if(editable) {%>
+                                                                                                    <button
+                                                                                                        class="btn btn-yellow btn-block"
+                                                                                                        type="submit">
+                                                                                                        Update <i
+                                                                                                            class="fa fa-arrow-circle-right"></i>
+                                                                                                    </button>
+                                                                                                    <% }else {%>
+                                                                                                        <button
+                                                                                                            class="button"><i
+                                                                                                                class="fa fa-user"></i>&nbsp;
+                                                                                                            <span>Register</span></button>
+                                                                                                        <%}%>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+                <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+    <!-- popper -->
+    <script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+    <!-- Bootstrap 4.0-->
+    <script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.min.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- Fab Admin App -->
+    <script src="/admin/cryptocurrency/js/template.js"></script>
+
+    <!-- Fab Admin for demo purposes -->
+    <script src="/admin/cryptocurrency/js/demo.js"></script>
+
+    <!-- Form validator JavaScript -->
+    <script src="/admin/cryptocurrency/js/pages/validation.js"></script>
+    <script>
+        ! function (window, document, $) {
+            "use strict";
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+        }(window, document, jQuery);
+    </script>
+
+</body>

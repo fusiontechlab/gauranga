@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Basic page needs -->
+<meta charset="utf-8">
+<!-- Mobile specific metas  -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicons Icon -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+
+<!-- CSS Style -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cms-index-index cms-home-page">
+
+
+  <%- include('common/header') %> 
+  <!-- end header -->
+
+<%- include('common/nav') %> 
+  <!-- Breadcrumbs -->
+  
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+           
+            <li><strong>Offers</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End -->
+  <div class="container" style="padding-top: 25px;padding-bottom: 25px;">
+    <div class="row">
+      <!--feature border box start-->
+      <div class="feature-box-grid">
+        <% offer.forEach(element => { %>
+          <div class="col-md-4">
+            <div class="featured-item border-box text-center">
+              <a href="#">
+                <div class="icon">
+                  <img src="/<%= element.image %> ">
+                </div>
+                <div class="title text-uppercase">
+                  <h4><%= element.title %> </h4>
+                </div>
+                <div class="desc"><%= element.heading %>  </div>
+              </a>
+            </div>
+          </div>
+        <% }) %>
+       
+       
+      <!--feature border box end--> 
+      </div>
+    </div>
+  </div>
+
+  <!-- service section -->
+  <div class="jtv-service-area">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper ship">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-paper-plane"></i></div>
+              <div class="service-wrapper">
+                <h3>World-Wide Shipping</h3>
+                <p>On order over <i class="fa fa-rupee"></i> 99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12 ">
+          <div class="block-wrapper return">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-rotate-right"></i></div>
+              <div class="service-wrapper">
+                <h3>100% secure payments</h3>
+                <p>Credit/ Debit Card/ Banking </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper support">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
+              <div class="service-wrapper">
+                <h3>Support 24/7</h3>
+                <p>Call us: ( +91 ) 456 789</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper user">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
+              <div class="service-wrapper">
+                <h3>Member Discount</h3>
+                <p>25% on order over <i class="fa fa-rupee"></i> 199</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+
+<!-- JS --> 
+
+<!-- jquery js --> 
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="js/revolution-slider.js"></script> 
+<script type="text/javascript" src="js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="js/countdown.js"></script>
+</body>
+
+</html>

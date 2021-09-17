@@ -1,0 +1,101 @@
+<%- include('common/header') %>
+  <%- include('common/nav') %>
+
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul>
+              <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+              <li><strong>Pay Now</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcrumbs End -->
+    <section class="main-container col2-right-layout">
+      <div class="main container">
+  <div class="text-center p-4 ">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+        <button class="btn btn-lg p-3 h2" id="rzp-button1" style="background-color: #dd127b; color: #fff;" >Continue Payment <i class="fa fa-angle-double-right"></i></button>
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      </div>
+      </div>
+</section>
+
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+ var timestamp = new Date().getUTCMilliseconds();
+
+  var options = {
+      "key": "<%=orderdata.rezpaykey%>", // Enter the Key ID generated from the Dashboard
+      "amount": "<%=order.amount%>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Gouranga Paul Group",
+      "description": "Pay To Continue",
+      "image": "/logo.png",
+      "order_id": "<%=order.id%>",
+      "callback_url": "/ordersuccess",
+      "prefill": {
+          "name": "<%=orderdata.name%>",
+          "email": "<%=orderdata.email%>",
+          "contact": "<%=orderdata.phone%>"
+      },
+      "notes": {
+          "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+          "color": "#DD127B"
+      }
+  };
+  var rzp1 = new Razorpay(options);
+  document.getElementById('rzp-button1').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+  }
+
+  </script>
+
+    <!-- Footer -->
+    <%- include('common/footer') %> 
+    <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- End Footer -->
+    </div>
+    <!-- jquery js -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Slider Js -->
+    <script type="text/javascript" src="js/revolution-slider.js"></script>
+    <script type="text/javascript" src="js/revolution-extension.js"></script>
+    <!-- owl.carousel.min js -->
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+    <!-- jquery.mobile-menu js -->
+    <script type="text/javascript" src="js/mobile-menu.js"></script>
+
+    <!--jquery-ui.min js -->
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+
+    <!-- main js -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- countdown js -->
+    <script type="text/javascript" src="js/countdown.js"></script>
+    
+    </body>
+
+    </html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Basic page needs -->
+
+<%- include('common/header') %> 
+<%- include('common/nav') %> 
+  
+  <!-- Main Container -->
+ 
+  <section class="main-container col1-layout cart_sec_tion">
+    <div class="main container">
+      <div class="col-main">
+        <div class="cart">
+          
+          <div class="page-content page-order">
+            <div class="page-title">
+            <h2>Shopping Cart</h2>
+          </div>
+            
+              <div class="order-detail-content">
+              <div class="table-responsive">
+                <% if(cart) { %>
+                  <% if(user && user.user_type ==="user") { %>
+                <table class="table table-bordered cart_summary">
+                  <thead>
+                    <tr>
+                      <th class="cart_product">Product</th>
+                      <th>Description</th>
+                      <th>Avail.</th>
+                      <th>Unit price</th>
+                      <th>Qty</th>
+                      <th>Total</th>
+                      <th  class="action"><i class="fa fa-trash-o"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   
+                    
+                    <% var total = 0; %>
+                    <% cart.forEach(product => { %>
+                      <% var sub = parseFloat(product.qty * product.price).toFixed(2) %>
+                      <% total += +sub %>
+                      <tr>
+                        <td class="cart_product"><a href="/single_product/<%= product._id %>"><img src="<%= product.image[0] %> " alt="Product"></a></td>
+                        <td class="cart_description"><p class="product-name"><a href="/single_product/<%= product._id %>">brand:<%= product.brand %>, title:<%= product.productName %>  </a></p>
+                          <small><a href="#"><%=product.color%></a></small>
+                          <small><a href="#"><%= product.size %> </a></small></td>
+                          
+                        <td class="availability in-stock"><span class="label"><%= product.stock %> </span></td>
+                        <td class="price"><span><i class="fa fa-rupee"></i><%= product.price %> </span></td>
+                        <td class="qty"><input class="form-control input-sm" type="text" value="<%= product.qty %> " readonly></td>
+                        <td class="price"><span><i class="fa fa-rupee"></i><%= sub %> </span></td>
+                       
+                        <td class="action">
+                          <a href="/update/<%= product.title %>/<%= product.color %>/<%= product.size %>?action=add">+</a>&nbsp;
+                          <a href="/update/<%= product.title %>/<%= product.color %>/<%= product.size %>?action=remove">-</a>&nbsp;
+                          <a class="icon-close" href="/update/<%= product.title %>/<%= product.color %>/<%= product.size %>?action=clear"></a>&nbsp;
+                      </td>
+                      </tr>
+                      <% }) %>
+                    
+                  </tbody>
+                 
+                  <tfoot>
+                    <tr>
+                      <td colspan="2" rowspan="2"></td>
+                      <td colspan="3">Total products (tax incl.)</td>
+                      <td colspan="2"><i class="fa fa-rupee"></i><%= parseFloat(total).toFixed(2) %> </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"><strong>Total</strong></td>
+                      <td colspan="2"><strong><i class="fa fa-rupee"></i><%= parseFloat(total).toFixed(2) %></strong></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="5" align="right">
+                          <a class="clearcart btn btn-danger" href="/cart/clear">Clear cart</a>
+                      </td>
+                      <td colspan="5" align="right">
+                          <!-- <a class="btn btn-primary buynow" href="#">Buy now</a> -->
+                      </td>
+                  </tr>
+                  </tfoot>
+                
+                </table>
+
+              </div>
+              <% } else { %> 
+                <button type="button" class="btn btn-primary"><a href="/account_page">Login to Continue</a></button>
+                <% } %>
+              <div class="cart_navigation"> <a class="continue-btn" href="/shop_grid"><i class="fa fa-arrow-left"> </i>&nbsp; Continue shopping</a> <a class="checkout-btn" href="/checkout"><i class="fa fa-check"></i> Proceed to checkout</a> </div>
+            </div>
+            
+          </div>
+
+        </div>
+
+
+
+        
+      </div>
+    </div>
+    <form   class="pp" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_cart">
+      <input type="hidden" name="upload" value="1">
+      <input type="hidden" name="business" value="sanjeeta1.kumari@gmail.com">
+      <% var num = 0; %>
+      <% cart.forEach(function(p){ %>
+          <% num++ %>
+          <input type="hidden" name="item_name_<%= num %>" value="<%= p.title %>">
+          <input type="hidden" name="amount_<%= num %>" value="<%= p.price %>">
+          <input type="hidden" name="quantity_<%= num %>" value="<%= p.qty %>">
+      <% }); %>
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="amount" value="">
+      <input type="image" id="text"  style="display:none" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+    </form>
+    <% } else { %>
+      <div class="empty-cart py-16">
+        <div class="container mx-auto text-center">
+          
+            <h1 class="text-3xl font-bold mb-2">Cart Empty 😕</h1>
+            <p class="text-gray-500 text-lg mb-12">You probably haven't ordered a  yet. <br>
+                To order product, go to the main page.</p>
+                <h2 class="back_btn"><a href="/shop_grid" class="inline-block"><span><i class="uil uil-arrow-left"></i></span>Go to shop</a></h2>
+            <img class="cart_img mx-auto" src="/image/empty-cart.png" alt="empty-cart">
+        </div>
+    </div>
+    <% } %>
+  </section>
+
+  
+  <!-- service section -->
+  <div class="jtv-service-area">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper ship">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-paper-plane"></i></div>
+              <div class="service-wrapper">
+                <h3>World-Wide Shipping</h3>
+                <p>On order over <i class="fa fa-rupee"></i> 99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12 ">
+          <div class="block-wrapper return">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-rotate-right"></i></div>
+              <div class="service-wrapper">
+                <h3>100% secure payments</h3>
+                <p>Credit/ Debit Card/ Banking </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper support">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
+              <div class="service-wrapper">
+                <h3>Support 24/7</h3>
+                <p>Call us: ( +91 ) 456 789</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper user">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
+              <div class="service-wrapper">
+                <h3>Member Discount</h3>
+                <p>25% on order over <i class="fa fa-rupee"></i> 199</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+ 
+<script>
+          
+  $(function() {
+     
+      $('a.clearcart').on('click', function () {
+          if (!confirm('Confirm clear cart'))
+              return false;
+      });
+      
+      $('a.buynow').on('click', function (e) {
+          e.preventDefault();
+          
+          $.get('/orderlist', function() {
+              $('form.pp input[type=image]').click();
+              $('.ajaxbg').show();
+          });
+      });
+          
+  });
+      
+  </script>
+<!-- JS --> 
+
+<!-- jquery js --> 
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="js/revolution-slider.js"></script> 
+<script type="text/javascript" src="js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="js/countdown.js"></script>
+</body>
+
+</html>

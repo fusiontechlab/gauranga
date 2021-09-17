@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('common/header') %>
+  <%- include('common/nav') %>
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul>
+              <li class="home"> <a title="Go to Home Page" href="/index">Home</a><span>&raquo;</span></li>
+              <li class=""> <a title="Go to Home Page" href="/shop_grid">Blouse</a><span>&raquo;</span></li>
+              <li><strong>Backless Custom Blouse</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcrumbs End -->
+    <!-- Main Container -->
+    <div class="main-container col1-layout">
+      <div class="container">
+        <div class="row">
+          <div class="col-main">
+            <div class="product-view-area">
+              <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+
+              
+                <div class="large-image"> 
+                <a href="/images/product-fashion-1.jpg" class="cloud-zoom" id="zoom0"
+                    rel="useWrapper: false, adjustY:0, adjustX:20">
+                    <img class="zoom-img" src="<%= products.image[0] %>" alt="products"> 
+                    </a> 
+                    </div>
+                
+                <div class="flexslider flexslider-thumb">
+
+
+
+
+
+                  <ul class="previews-list slides">
+                     <% for(var i=0; i< products.image.length; i++) {%>
+                      <li>
+                        <a href='<%=products.image[i] %>' class="cloud-zoom-gallery"
+                          rel="useZoom: 'zoom<%= i %>', smallImage: '<%= products.image[i] %> ' ">
+                          <img src="<%= products.image[i] %>" alt="Thumbnail <%= i %>" /></a>
+                      </li>
+                      <% } %>
+                  </ul>
+
+
+
+                </div>
+
+                <!-- end: more-images -->
+
+              </div>
+              <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
+                <div class="product-name">
+                  <h1>
+                    <%=products.title%><span><a href="/vidio">HOW TO MEASURE</a></span>
+                  </h1>
+                </div>
+                <div class="code_product">
+                  <span>
+                    <%=products.code%>
+                  </span>
+                </div>
+                <div class="price-box">
+                  <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> <i
+                        class="fa fa-rupee"></i>
+                      <%=products.tag%>
+                    </span> </p>
+                  <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> <i
+                        class="fa fa-rupee"></i>
+                      <%=products.price%>
+                    </span> </p>
+                </div>
+                <div class="ratings">
+                 
+                                      <td>
+                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                            class="fa fa-star"></i> </div>
+                                      </td>
+                                    
+                                          <p class="rating-links"> <a href="#"><%= products.topRating%> Review(s)</a> </p>
+                                          <p class="availability in-stock pull-right">Availability: <span>
+                                              <%=products.availability%>
+                                            </span></p>
+                </div>
+                <div class="short-description">
+                  <h2>Quick Overview</h2>
+                  <p>
+                    <%=products.desc%>
+                  </p>
+                  <!-- <p> Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent
+                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus,
+                    posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum.
+                    Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non
+                    nunc mattis lobortis.</p> -->
+                </div>
+                <form action="/cart/add/<%=id%>" method="POST">
+                  <div class="product-color-size-area">
+                    <div class="color-area">
+                      <h2 class="saider-bar-title">Color</h2>
+                     
+                      <div class="color">
+                        <ul>
+                          <ul>
+                          
+                            <select name="color" id="cars">
+                              <% if (products.color) { %>
+                                <% for( let index=0; index < products.color.length; index++ ) { %>
+                                  <option value="<%= products.color[index] %>">
+                                    <%= products.color[index] %>
+                                  </option>
+  
+                                  <% } %>
+                              <% } else{%>
+                                <option value="black">black</option>
+                                <% } %>
+                            
+                            </select>
+                          </ul>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="size-area">
+                      <h2 class="saider-bar-title">Size</h2>
+                      <div class="size">
+                        <ul>
+                          <select name="size" id="cars">
+                            <% if (products.color) { %>
+                            <% for( let index=0; index < products.size.length; index++ ) { %>
+                              <option value="<%= products.size[index] %>">
+                                <%= products.size[index] %>
+                              </option>
+                              <% } %>
+                              <% }else{%>
+                                <option value="free">free size</option>
+                                <% } %>
+                          </select>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-variation">
+
+                    <div class="cart-plus-minus">
+                      <label for="qty">Quantity:</label>
+                      <div class="numbers-row">
+
+                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
+                        <div
+                          onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
+                          class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+                      </div>
+                    </div>
+
+                    <p><a href="#"><button class="button pro-add-to-cart" title="Add to Cart" type="submit"><span><i
+                              class="fa fa-shopping-bag"></i> Add to Cart</span></button></a></p>
+
+                    <% if (user && user.user_type ==="user") { %>
+                      <a href="/wishlist/add/<%=id%>" class="wish_product"><i class="fa fa-heart-o"></i><span>Add to
+                          Wishlist</span></a>
+                      <% }else{ %>
+                        <a href="/account_page" class="wish_product"><i class="fa fa-heart-o"></i><span>Add to
+                            Wishlist</span></a>
+                        <%}%>
+
+
+
+                  </div>
+                </form>
+
+
+                <div class="share-box">
+                  <div class="title">Share in social media</div>
+                  <div class="socials-box">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube" target="_blank"></i></a>
+                    <a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-overview-tab">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="product-tab-inner">
+                    <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                      <li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
+                      <li> <a href="#reviews" data-toggle="tab">Reviews</a> </li>
+                    </ul>
+                    <div id="productTabContent" class="tab-content">
+                      <div class="tab-pane fade in active" id="description">
+                        <div class="std">
+                          <!-- <p>Proin lectus ipsum, gravida et mattis vulputate, 
+                          tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in 
+                          faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend 
+                          laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla
+                          luctus malesuada tincidunt. Nunc facilisis sagittis ullamcorper. Proin 
+                          lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et 
+                          lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et 
+                          ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus 
+                          adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada 
+                          tincidunt. Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, 
+                          gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. 
+                          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                          cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl 
+                          ut dolor dignissim semper. Nulla luctus malesuada tincidunt.</p>
+                       
+                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+                       -->
+                       <p> <%= products.longdesc %> </p> 
+                        </div>
+                      </div>
+                      <div id="reviews" class="tab-pane fade">
+                        <div class="col-sm-5 col-lg-5 col-md-5">
+                          <div class="reviews-content-left">
+                            <h2>Customer Reviews</h2>
+                            <% ratingData.forEach(r=> { %>
+                              
+                              <div class="review-ratting">
+                                <p>
+                                  <%= r.summary %>
+                                </p>
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <th>Price</th>
+
+                                      <% if (r.price==1) { %>
+                                        <td>
+                                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+                                              class="fa fa-star-o"></i> </div>
+                                        </td>
+                                        <% } %>
+                                          <% if (r.price==2) { %>
+                                            <td>
+                                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+                                                  class="fa fa-star-o"></i> </div>
+                                            </td>
+                                            <% } %>
+                                              <% if (r.price==3) { %>
+                                                <td>
+                                                  <div class="rating"> <i class="fa fa-star"></i> <i
+                                                      class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                      class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                </td>
+                                                <% } %>
+                                                  <% if (r.price==4) { %>
+                                                    <td>
+                                                      <div class="rating"> <i class="fa fa-star"></i> <i
+                                                          class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                          class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                    </td>
+                                                    <% } %>
+                                                      <% if (r.price==5) { %>
+                                                        <td>
+                                                          <div class="rating"> <i class="fa fa-star"></i> <i
+                                                              class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                              class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                                        </td>
+                                                        <% } %>
+
+
+
+
+
+                                    </tr>
+                                    <tr>
+                                      <th>Value</th>
+                                      <%= r.value %>
+                                        <% if (r.value==1) { %>
+                                          <td>
+                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i>
+                                              <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+                                                class="fa fa-star-o"></i> </div>
+                                          </td>
+                                          <% } %>
+                                            <% if (r.value==2) { %>
+                                              <td>
+                                                <div class="rating"> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+                                                    class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                              </td>
+                                              <% } %>
+                                                <% if (r.value==3) { %>
+                                                  <td>
+                                                    <div class="rating"> <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                  </td>
+                                                  <% } %>
+                                                    <% if (r.value==4) { %>
+                                                      <td>
+                                                        <div class="rating"> <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                      </td>
+                                                      <% } %>
+                                                        <% if (r.value==5) { %>
+                                                          <td>
+                                                            <div class="rating"> <i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                            </div>
+                                                          </td>
+                                                          <% } %>
+
+                                    </tr>
+                                    <tr>
+                                      <th>Quality</th>
+                                      <%= r.quality %>
+                                        <% if (r.quality==1) { %>
+                                          <td>
+                                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i>
+                                              <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+                                                class="fa fa-star-o"></i> </div>
+                                          </td>
+                                          <% } %>
+                                            <% if (r.quality==2) { %>
+                                              <td>
+                                                <div class="rating"> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+                                                    class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                              </td>
+                                              <% } %>
+                                                <% if (r.quality==3) { %>
+                                                  <td>
+                                                    <div class="rating"> <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                  </td>
+                                                  <% } %>
+                                                    <% if (r.quality==4) { %>
+                                                      <td>
+                                                        <div class="rating"> <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                      </td>
+                                                      <% } %>
+                                                        <% if (r.quality==5) { %>
+                                                          <td>
+                                                            <div class="rating"> <i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                            </div>
+                                                          </td>
+                                                          <% } %>
+
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <p class="author">
+                                  <%=r.name%><small> (Posted on <%=moment(r.createdAt).format('DD / MM / YYYY')%>
+                                        )</small>
+                                </p>
+                              </div>
+                              <% }) %>
+
+
+                          </div>
+                        </div>
+                        <div class="col-sm-7 col-lg-7 col-md-7">
+                          <div class="reviews-content-right">
+                            <h2>Write Your Own Review</h2>
+                            <form action="/rating" method="POST">
+                              <div class="table-responsive reviews-table">
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <th></th>
+                                      <th>1 star</th>
+                                      <th>2 stars</th>
+                                      <th>3 stars</th>
+                                      <th>4 stars</th>
+                                      <th>5 stars</th>
+                                    </tr>
+                                    <tr>
+                                      <td>Quality</td>
+                                      <td><input type="radio" name="quality" value="1"></td>
+                                      <td><input type="radio" name="quality" value="2"></td>
+                                      <td><input type="radio" name="quality" value="3"></td>
+                                      <td><input type="radio" name="quality" value="4"></td>
+                                      <td><input type="radio" name="quality" value="5"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Price</td>
+                                      <td><input type="radio" name="price" value="1"></td>
+                                      <td><input type="radio" name="price" value="2"></td>
+                                      <td><input type="radio" name="price" value="3"></td>
+                                      <td><input type="radio" name="price" value="4"></td>
+                                      <td><input type="radio" name="price" value="5"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Value</td>
+                                      <td><input type="radio" name="value" value="1"></td>
+                                      <td><input type="radio" name="value" value="2"></td>
+                                      <td><input type="radio" name="value" value="3"></td>
+                                      <td><input type="radio" name="value" value="4"></td>
+                                      <td><input type="radio" name="value" value="5"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="form-area">
+                                <div class="form-element">
+                                  <label>Nickname <em>*</em></label>
+                                  <input type="text" name="name">
+                                </div>
+                                <div class="form-element">
+                                  <label>Summary of Your Review <em>*</em></label>
+                                  <input type="text" name="summary">
+                                </div>
+                                <div class="form-element">
+                                  <label>Review <em>*</em></label>
+                                  <textarea name="review"></textarea>
+                                </div>
+                                <input type="hidden" name="id" value="<%=products._id%>">
+
+                                <div class="buttons-set">
+                                  <button class="button submit" title="Submit Review" type="submit"><span><i
+                                        class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>
+
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Container End -->
+
+    <!-- Related Product Slider -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="related-product-area">
+            <div class="page-header">
+              <h2>Related Products</h2>
+              <!-- <img src="footerlogo.png"> -->
+            </div>
+            <div class="related-products-pro">
+              <div class="slider-items-products">
+                <div id="related-product-slider" class="product-flexslider hidden-buttons">
+                  <div class="slider-items slider-width-col4 fadeInUp">
+                    <% related.forEach(relatedProduct=> { %>
+                      <div class="product-item">
+                        <div class="item-inner">
+                          <div class="product-thumbnail">
+
+                            <div class="pr-img-area"> <a title="Product title here"
+                                href="/single_product/<%= relatedProduct._id %>">
+                                <figure> <img class="first-img" src="<%= relatedProduct.image[0] %>" alt=" ">
+                                  <img class="hover-img" src="<%= relatedProduct.image[1] %>" alt=" ">
+                                </figure>
+                              </a> </div>
+                            <div class="pr-info-area">
+                              <div class="pr-button">
+                                <div class="mt-button add_to_wishlist"> <a
+                                    href="/wishlist/add/<%= relatedProduct._id %>"> <i class="fa fa-heart-o"></i> </a>
+                                </div>
+                                <div class="mt-button add_to_compare"> <a
+                                    href="/single_product/<%= relatedProduct._id %>"> <i class="fa fa-eye"></i> </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="item-info">
+                            <div class="info-inner">
+
+                              <div class="item-title"> <a title="<%=relatedProduct.title%>"
+                                  href="/single_product/<%= relatedProduct._id %>">
+                                  <%=relatedProduct.title%><span>(#<%=relatedProduct.code%>)</span>
+                                </a> </div>
+                              <div class="item-content">
+                                <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
+                                    class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                                </div>
+                                <div class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price">Rs
+                                        <%=relatedProduct.tag%></span> </span> </div>
+                                </div>
+                                <!-- <div class="pro-action">
+                                <button type="button" class="add-to-cart"> <i class="fa fa-shopping-bag"></i><span> Add to Cart</span> </button>
+                              </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% }) %>
+                       
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Related Product Slider End -->
+
+    <!-- service section -->
+
+
+    <!-- Footer -->
+    <footer>
+      <%- include('common/footer') %> 
+      <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+    </footer>
+
+   
+
+    <!-- End Footer -->
+    </div>
+
+    <!-- JS -->
+
+    <!-- jquery js -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <!-- owl.carousel.min js -->
+    <script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+    <!--cloud-zoom js -->
+    <script type="text/javascript" src="/js/cloud-zoom.js"></script>
+    <!-- flexslider js -->
+    <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+    <!-- jquery.mobile-menu js -->
+    <script type="text/javascript" src="/js/mobile-menu.js"></script>
+
+    <!--jquery-ui.min js -->
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+
+    <!-- main js -->
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <!-- countdown js -->
+    <script type="text/javascript" src="/js/countdown.js"></script>
+    </body>
+
+</html>

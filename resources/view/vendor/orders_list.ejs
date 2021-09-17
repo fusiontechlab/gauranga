@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('common/head/head.ejs') %>
+
+<body class="hold-transition skin-yellow sidebar-mini">
+<div class="wrapper">
+
+    <%- include('common/header/header.ejs') %>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <%- include('common/sidebar/sidebar.ejs') %>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Order List
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+        <li class="breadcrumb-item active">order List</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+		  
+		<div class="col-12">
+         
+         <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">All Orders</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+				<div class="table-responsive">
+				 
+
+  <table  id="example" class="table table-bordered table-striped" style="width:100%">
+	<thead style="color: rgb(119, 86, 86);">
+		<tr >
+      <th>Order Number</th>
+      <th>Order Time</th>
+      <th>Order Date</th>
+      <th>Order Phone</th>
+      <th>Order Address</th>
+      <th>Order Status</th>
+      <th>Order Item</th>
+      <th>Order price</th>
+      <th>Order image</th>
+      <th >Deliver status</th>
+      <th>Order Charge</th>
+      <th>Total Amount</th>
+     
+      <th>Action</th>
+      <th>Delete</th>
+					
+		</tr>
+	</thead>
+  <tbody>
+             
+    <% if (order.length) { %>
+     
+     
+     <% order.forEach(order => { %>
+     
+      
+      <tr> 
+        <!--order number-->
+        <td data-title="Order Number"><a href="#" class="order-number"><%= order._id %> </a></td>
+        <!--order date-->
+        <td data-title="Order Date"><%=moment(order.createdAt).format('hh:mm A')%></td>
+        <td data-title="Order Date"><%=moment(order.createdAt).format('DD / MM / YYYY')%></td>
+        <td data-title="Order Address"><%=order.phone%></td>
+        <td data-title="Order Address"><%=order.address%></td>
+       
+        <td data-title="Order Status"><%=order.status%></td>
+        <% order.items.forEach(order => { %>
+        <td data-title="Order title"><%=order.title%></td>
+        <td data-title="Order price"><%=order.price%></td>
+            <%=order.deliveryStatus%>
+        <td data-title="Order Image"><img src="<%=order.image[0]%>" alt="" srcset=""></td>
+        <% }) %>
+        
+        <td><%=order.deliveryStatus %></td>
+        <td><%=order.chargeprice %></td>
+        <td><%=order.totalAmount %></td>
+        <td> <button type="button" class="btn btn-rounded btn-sm btn-success" ><a href="/editStatus/<%=order._id%>">update status</a></button></td>
+<td> <button type="button" class="btn btn-rounded btn-sm btn-danger"><a href="/deletevendorOrder/<%=order._id%>">Delete</a></button></td>
+             
+      
+     
+      </tr>
+    <% }) %>
+
+  
+   
+    <% } else{%>
+         <tr>orders not found</tr>
+    <%}%>
+   
+ 
+
+  </tbody>
+        </div>
+        </div>
+
+</div>
+</div>  
+</div>
+     </section>
+  </div>
+  
+  
+ 
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+   <!-- FastClick -->
+	<script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+	
+    <!-- jQuery 3 -->
+	<script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>	
+	
+	<!-- popper -->
+	<script src="/admin/assets/vendor_components/popper/dist/popper.min.js"></script>
+	
+	<!-- Bootstrap 4.0-->
+	<script src="/admin/assets/vendor_components/bootstrap/dist/js/bootstrap.js"></script>	
+	
+	<!-- webticker -->
+	<script src="/admin/assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js"></script>
+	
+    <!--amcharts charts -->
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+	
+	<!-- This is data table -->
+    <script src="/admin/assets/vendor_components/datatable/datatables.min.js"></script>	
+		
+	<!-- Slimscroll -->
+	<script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+	
+	<!-- FastClick -->
+	<script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+	
+	
+	<!-- Fab Admin App -->
+	<script src="/admin/cryptocurrency/js/template.js"></script>
+	
+	<!-- Fab Admin dashboard demo (This is only for demo purposes) -->
+	<script src="/admin/cryptocurrency/js/pages/dashboard.js"></script>
+	
+	<!-- Fab Admin for demo purposes -->
+	<script src="/admin/cryptocurrency/js/demo.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

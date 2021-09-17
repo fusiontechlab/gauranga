@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+      <!-- <head>
+<! Basic page needs -->
+<meta charset="utf-8">
+<!-- Mobile specific metas  -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicons Icon -->
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+<link rel="stylesheet" href="">
+<!-- CSS Style -->
+<link rel="stylesheet" href="/style.css">
+
+</head> 
+
+<body class="cms-index-index cms-home-page">
+<!--<div id="preloader">-->
+<!--  <div id="status">&nbsp;</div>-->
+<!--</div>-->
+
+		
+
+
+<!-- mobile menu -->
+<div id="mobile-menu">
+ 
+  <ul>
+    <li><a href="/" class="home1">Home</a>
+    </li>
+    <li><a href="#">All Brands</a>
+      <ul>
+        <% for( let index = 0; index < data.length; index++ ) { %>
+        <li><a href="#"><%=data[index].category %></a>
+          <ul>
+            <% for( let jndex = 0; jndex < data[index].category_info.length; jndex++ ) { %>
+              <li><a href="/shop_grid/<%=data[index].category_info[jndex].subCategory %>"><span><%=data[index].category_info[jndex].subCategory %></span></a></li>
+              
+             <% } %>
+        </li>
+        <% } %>
+        
+        
+      </ul>
+      
+			  
+    </li>
+    <li><a href="/shop_grid">Our Products</a></li>
+    <li><a href="/arrival">New Arrival</a></li>
+    <li><a href="/shop_grid">Most Popular</a></li>
+    <li><a href="/about_us">About Us</a></li>
+    <li><a href="/contact_us">Contact Us</a></li>
+  </ul>
+
+
+</div>
+<!-- end mobile menu -->
+<div id="page"> 
+  
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 col-md-4 col-xs-12"> 
+              <!-- Default Welcome Message -->
+              <div class="welcome-msg hidden-xs hidden-sm">Welcome to Gouranga Paul Group! </div>
+            </div>
+            
+            <!-- top links -->
+            <div class="headerlinkmenu col-md-8 col-sm-8 col-xs-12">
+              <ul class="links">
+                <li><a title="Offers" href="/offer"><span><i class="uil uil-gift"></i> Offers</span></a></li>
+                <li>
+                  <a href="/faq" title="FAQs"><span><i class="uil uil-question-circle"></i> Help</span></a>
+                </li>
+               <!--  <li><a title="Wishlist" href="wishlist"><span><i class="uil uil-heart"></i> Wishlist</span></a></li>
+                <li><a title="Wishlist" href="profile"><span><i class="uil uil-user"></i> My Account</span></a></li> -->
+               
+                <% if (user && user.user_type ==="user") { %>
+                 
+                  <a title="Account" href="/logout"><span><i class="uil uil-padlock"></i> Logout</span></a>
+               <% } else { %>
+                <a title="Account" href="/account_page"><span><i class="uil uil-padlock"></i> Login</span></a>
+               <% } %>
+           
+                
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <% if (messages.success) { %>
+    <div class="alert alert-success" id="success-alert">
+      <strong > <%= messages.success %>. </strong> 
+    </div>
+    <% } %>
+    <% if (error) { %>
+      <div class="alert alert-success" id="success-alert" >
+        <% error.forEach(err => { %>
+          <strong style="color: rgb(207, 57, 46); opacity: 89;
+          animation-name: topFadeOut;
+          animation-duration: 5s;"> <%= err.msg %>. </strong> 
+        <% }) %>
+        
+      </div>
+      <% } %>
+    <script>
+
+var alertMsg = document.querySelector('#success-alert')
+	if(alertMsg) {
+		setTimeout(() => {
+			alertMsg.remove()
+		}, 3000)
+	}
+  
+  </script>
+
+  
+<body class="cms-index-index cms-home-page">
+  <%- include('common/nav') %> 
+
+<div id="page"> 
+  
+  <!-- Header -->
+
+  
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+            <li><strong>My Account</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+ 
+  <!-- Main Container -->
+  <section class="main-container col1-layout">
+    <div class="main container">
+      <div class="page-content">
+        <form action="/login_auth" method="post">
+        <div class="account-login">
+          <div class="box-authentication">
+            <h4>Login</h4>
+            <p class="before-login-text">Welcome back! Sign in to your account</p>
+            <label for="email_login">Email address<span class="required">*</span></label>
+            <input id="email_login" type="text" name="email" class="form-control">
+            <label for="password_login">Password<span class="required">*</span></label>
+            <input id="password_login" type="password" name="password" class="form-control">
+            <!-- <p class="forgot-pass"><a href="#">Lost your password?</a></p> -->
+            <button type ="submit" class="button"><i class="icon-lock icons"></i>&nbsp; <span>Login</span></button>
+           
+            <label class="inline" for="rememberme">
+              <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+              Remember me </label>
+          </div>
+          </form>
+          <form  action="/changePassword" method="POST">
+            <input type="text" name="email" id="">
+           <button type="submit">Reset</button>
+        </form>
+        <form action="/register_page" method="post">
+          <div class="box-authentication">
+            <h4>Register</h4>
+            <p>Create your very own account</p>
+            <label for="phone">Phone Number<span class="required">*</span></label>
+            <input id="phone" type="text" name="phone"  class="form-control" placeholder="OTP sent for verifiy phone  to register" required>
+          
+            <button type="submit" class="button">Register</button>
+             <!-- <a href="" class="button"><i class="icon-user icons"></i>&nbsp; <span>Register</span></a> -->
+           
+          </form>
+           
+            <div class="register-benefits">
+              <h5>Sign up today and you will be able to :</h5>
+              <ul>
+                <li>Login to Shop now</li>
+                <li>Track your orders easily</li>
+                <li>We Create internal quality standards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Main Container End --> 
+   <!-- service section -->
+  <div class="jtv-service-area">
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper ship">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-paper-plane"></i></div>
+              <div class="service-wrapper">
+                <h3>World-Wide Shipping</h3>
+                <p>On order over <i class="fa fa-rupee"></i> 99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12 ">
+          <div class="block-wrapper return">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-rotate-right"></i></div>
+              <div class="service-wrapper">
+                <h3>100% secure payments</h3>
+                <p>Credit/ Debit Card/ Banking </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper support">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
+              <div class="service-wrapper">
+                <h3>Support 24/7</h3>
+                <p>Call us: ( +91 ) 456 789</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-3 col-sm-6 col-xs-12">
+          <div class="block-wrapper user">
+            <div class="text-des">
+              <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
+              <div class="service-wrapper">
+                <h3>Member Discount</h3>
+                <p>25% on order over <i class="fa fa-rupee"></i> 199</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+
+<!-- JS --> 
+
+<!-- jquery js --> 
+<script type="text/javascript" src="/js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="/js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="/js/revolution-slider.js"></script> 
+<script type="text/javascript" src="/js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="/js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="/js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="js/countdown.js"></script>
+</body>
+
+</html>

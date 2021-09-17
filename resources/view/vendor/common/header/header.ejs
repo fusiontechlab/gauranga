@@ -1,0 +1,63 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/admin/index" class="logo">
+      <!-- mini logo -->
+	  <b class="logo-mini">
+		  <span class="light-logo"><img src="/admin/images/logo.png" alt="logo" style="width: 60px; height: 40px;"></span>
+		  <span class="dark-logo"><img src="/admin/images/logo.png" alt="logo"></span>
+	  </b>
+      <!-- logo-->
+      <span >
+		 <span>GOURANGA PAUL <span>group</span></span>
+		
+	  </span>
+    </a>
+    <!-- Header Navbar -->
+
+    
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div>
+		  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+			<span class="sr-only">Toggle navigation</span>
+		  </a>
+
+		  <!-- <div class="btn-group d-none d-lg-inline-block mt-5">
+			 <button class="btn dropdown-toggle mr-10 btn-outline btn-white" type="button" data-toggle="dropdown">Dashboard</button>
+			 <div class="dropdown-menu">
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/src/"><i class="fa fa-dashboard w-30"></i>Main Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/cryptocurrency/"><i class="fa fa-money w-30"></i>Cryptocurrency Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/ecommerce-dashboard/"><i class="fa fa-shopping-basket w-30"></i>eCommerce Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/hospital-dashboard/"><i class="fa fa-heartbeat w-30"></i>Hospital Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/horizontal-nav/main/"><i class="fa fa-bars w-30"></i>Horizontal Nav Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/horizontal-nav/real-estate-dashboard/"><i class="fa fa-building w-30"></i>Real Estate Dashboard</a>
+				<a class="dropdown-item" href="http://fab-admin-templates.multipurposethemes.com/fab-admin/salesreport-dashboard/"><i class="fa fa-shopping-cart w-30"></i>Sales Report Dashboard</a>
+			 </div>
+		  </div> -->
+	  </div>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+		  
+				
+		    <% if (messages.success) { %>
+				<div class="alert alert-success" id="success-alert">
+				  <strong>Success!</strong> Indicates a successful or positive action.
+				</div>
+			  <% } %>
+			  
+        
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <script>
+	const alertMsg = document.querySelector('#success-alert')
+	
+	if(alertMsg) {
+		setTimeout(() => {
+			alertMsg.remove()
+		}, 2000)
+	}
+	
+	</script>

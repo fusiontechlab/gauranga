@@ -1,0 +1,98 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <title>Admin Area</title> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/adminstyle.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <%- include('common/head/head.ejs') %>
+</head>
+
+<body class="hold-transition skin-yellow sidebar-mini">
+  <div class="wrapper">
+
+    <%- include('common/header/header.ejs') %>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <%- include('common/sidebar/sidebar.ejs') %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+          <section class="content-header">
+            <h1>
+              Edit Products
+            </h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Order Status</a></li>
+              <li class="breadcrumb-item active">Edit Status</li>
+            </ol>
+          </section>
+
+
+          <section class="content">
+
+            <form method="post" action="/update-status">
+
+              <div class="form-group">
+                <label for="">Status</label>
+                <select name="status" id="">
+                  <option value="<%=data.status%>">
+                    <%=data.status%>
+                  </option>
+                  <option value="delivered">delivered</option>
+                  <option value="Process">Process</option>
+                  <option value="complte">complete</option>
+
+                </select>
+                <input type="hidden" name="id" value="<%=data._id%>">
+                <button class="btn btn-default">Submit</button>
+            </form>
+
+
+
+            <br><br>
+
+
+
+          </section>
+
+        </div>
+
+
+
+
+        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery 3 -->
+  <script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+  <!-- popper -->
+  <script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+  <!-- Bootstrap 4.0-->
+  <script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.min.js"></script>
+
+  <!-- SlimScroll -->
+  <script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- FastClick -->
+  <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+  <!-- Fab Admin App -->
+  <script src="/admin/cryptocurrency/js/template.js"></script>
+
+  <!-- Fab Admin for demo purposes -->
+  <script src="/admin/cryptocurrency/js/demo.js"></script>
+
+  <!-- Form validator JavaScript -->
+  <script src="/admin/cryptocurrency/js/pages/validation.js"></script>
+
+
+</body>

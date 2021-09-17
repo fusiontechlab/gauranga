@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('common/header') %>
+<%- include('common/nav') %> 
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+            <li class=""> <a title="Go to Home Page" href="shop_grid.html">Blouse</a><span>&raquo;</span></li>
+            <li><strong>Bridal wear</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End -->
+
+  <!-- Main Container -->
+  <div class="main-container col2-left-layout">
+    <div class="container">
+      <div class="row">
+        <div class="col-main col-sm-9 col-xs-12 col-sm-push-3">
+          
+          <div class="shop-inner">
+            <div class="banner_box">
+              <img src="/images/s6w.jpg"/>
+          </div>
+            <div class="toolbar">
+              <div class="view-mode">
+                <div class="page-title">
+                  <h2>Eithnic Wear</h2>
+                </div>
+              </div>
+              <div class="sorter">
+                <div class="short-by">
+                  <label>Sort By:</label>
+                  <form action="/log" method="post">
+                  <select  name="memberid" class="form-control member_dropdown" >
+                    <option id="myselect1" name= "one" value="1">popularity</option>
+                    <option id="myselect2" name= "two" value="2">low-high</option>
+                    <option id="myselect3" name= "three" value="3">high-</option>
+              
+                  </select>
+                </form>
+                </div>
+                <div class="short-by page">
+                  <label>Show:</label>
+                  <select>
+                    <option selected="selected">18</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-area">
+              <ul class="products-grid" >
+                <% if (!products) { %>
+                  <% products.forEach(function(p){ %>
+                    <li class="item col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                      <div class="product-item">
+                        <div class="item-inner">
+                          <div class="product-thumbnail">
+                          
+                          
+                         
+                            <div class="pr-img-area"> <a title="<%= p.title %> " href="/single_product">
+                              <figure> <img class="first-img" src="/productImage/<%= p.id %>/<%= p.image %>" alt=" "> <img class="hover-img" src="/productImage/<%= p.id %>/<%= p.hover %>" alt=" "></figure>
+                              </a> </div>
+                             
+                            <div class="pr-info-area">
+                              <div class="pr-button">
+                                <% if (user) { %>
+                                  <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/<%=p.id%>"> <i class="pe-7s-like"></i> </a> </div>
+                                <% }else{ %>
+                                 <p><i class="fa fa-sign-in" aria-hidden="true"></i></p>
+                                  <%}%>
+                               
+                                <div class="mt-button add_to_compare"> <a href="/single_product/<%=p._id%>"> <i class="fa fa-eye"></i> </a> </div>
+                              </div>
+                            </div>
+                          </div>
+        
+                          <div class="item-info">
+                            <div class="info-inner">
+                              <div class="item-title"> <a title="Product title here"><%= p.title %> <span>(<%=p.code%>)</span> </a> </div>
+                              
+                              <div class="item-content">
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price"><i class="fa fa-rupee"></i><%= p.tag %> </span> </span> </div>
+                                </div>
+                                <div class="pro-action">
+                                  <button type="button" class="add-to-cart"> <i class="fa fa-shopping-bag"></i><span> Add to Cart</span> </button>
+                                  <% }); %>
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+    
+    
+    
+                          
+                        </div>
+                      </div>
+                    </li>
+                <% }else{ %>
+
+                  <li class="item col-lg-6 col-md-6 col-sm-6 col-xs-6 " id="orderTableBody">
+                
+                  </li>
+
+                  <%}%>
+              
+               
+            
+               
+              </ul>
+            
+            </div>
+      
+            <div class="pagination-area">
+              <ul>
+                <li><a class="active" href="/page/">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+          <div class="block category-sidebar">
+            <div class="sidebar-title">
+              <h3>Categories</h3>
+            </div>
+            <ul class="product-categories">
+              <li class="cat-item current-cat cat-parent"><a href= "shop_grid.html">Women</a>
+                <ul class="children">
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Accessories</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Dresses</a></li>
+                      <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
+                        <ul  class="children">
+                          <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a></li>
+                          <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Sling bag</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; backpack</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Fabric Handbags</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Sling bag</a></li>
+                    </ul>
+                  </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Jewellery</a> </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Swimwear</a> </li>
+                </ul>
+              </li>
+              <li class="cat-item cat-parent"><a href="shop_grid.html">Men</a>
+                <ul class="children">
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Dresses</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Casual</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Designer</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Evening</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Hoodies</a></li>
+                    </ul>
+                  </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Jackets</a> </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Shoes</a> </li>
+                </ul>
+              </li>
+              <li class="cat-item"><a href="shop_grid.html">Electronics</a></li>
+              <li class="cat-item"><a href="shop_grid.html">Furniture</a></li>
+              <li class="cat-item"><a href="shop_grid.html">KItchen</a></li>
+            </ul>
+          </div>
+          <div class="block shop-by-side">
+            <div class="sidebar-bar-title">
+              <h3>Shop By</h3>
+            </div>
+          
+            <div class="block-content">
+              <div class="layered-Category">
+                <h2 class="saider-bar-title">Categories</h2>
+                <% for( let index = 0; index < count.length; index++ ) { %>
+                <div class="layered-content">
+                 
+                  <ul class="custom-control custom-checkbox">
+                    <a href="#">
+                      <li>
+                        <input type="checkbox" data-pizza="<%= JSON.stringify(count[index].subCategory) %>" class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold"   value="<%= JSON.stringify(count[index].subCategory) %>" id="checkBox">
+                        <input type="hidden"  class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold"   value="0" id="checkBoxhidden">
+                        <label class="custom-control-label"> <span class="button"></span><%=count[index].subCategory%><span class="count">( <%=  count[index]. category_info.length %>)</span> </label>
+                  </li>
+                    </a>
+                              <input type="hidden" name="id" value="<%=count[index].subCategory%>">
+                  </ul>
+                
+                </div>
+                <% } %>
+              </div>
+              <table>
+                <tbody id="orderTableBody" class="ul_sec li" >
+                 
+                </tbody>
+               
+           
+              <div class="color-area">
+                <h2 class="saider-bar-title">Color</h2>
+                <div class="color">
+                  <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+
+
+
+                   
+                  </ul>
+                </div>
+              </div>
+              <div class="size-area">
+                <h2 class="saider-bar-title">Size</h2>
+                <div class="size">
+                  <ul>
+                    <li><a href="#">S</a></li>
+                    <li><a href="#">L</a></li>
+                    <li><a href="#">M</a></li>
+                    <li><a href="#">XL</a></li>
+                    <li><a href="#">XXL</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+          <div class="block product-price-range ">
+            <div class="sidebar-bar-title">
+              <h3>Price</h3>
+            </div>
+            <div class="block-content">
+              <div class="slider-range">
+               <!--  <div data-label-reasult="Range:" data-min="0" data-max="500" data-unit="$" class="slider-range-price" data-value-min="50" data-value-max="350"></div>
+                <div class="amount-range-price">Range: $10 - $550</div> -->
+                <ul class="check-box-list">
+                  <li>
+                    <input type="checkbox" id="p1" name="cc" value="20-50" />
+                    <label for="p1"> <span class="button"></span> <i class="fa fa-rupee"></i> 20 - <i class="fa fa-rupee"></i> 50<span class="count">(2)</span> </label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="p2" name="cc" />
+                    <label for="p2"> <span class="button"></span> <i class="fa fa-rupee"></i> 50 - <i class="fa fa-rupee"></i> 100<span class="count">(9)</span> </label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="p3" name="cc" />
+                    <label for="p3"> <span class="button"></span> <i class="fa fa-rupee"></i> 100 - <i class="fa fa-rupee"></i> 250<span class="count">(40)</span> </label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="p4" name="cc" />
+                    <label for="p3"> <span class="button"></span> <i class="fa fa-rupee"></i> 250 - <i class="fa fa-rupee"></i> 500<span class="count">(10)</span> </label>
+                  </li>
+                  <li>
+                    <input type="checkbox" id="p5" name="cc" />
+                    <label for="p3"> <span class="button"></span> <i class="fa fa-rupee"></i> 500 - <i class="fa fa-rupee"></i> 1000<span class="count">(20)</span> </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="block popular-tags-area ">
+            <div class="sidebar-bar-title">
+              <h3>Popular Tags</h3>
+            </div>
+            <div class="tag">
+              <ul>
+                <li><a href="#">Backless</a></li>
+                <li><a href="#">Halter Neck</a></li>
+                <li><a href="#">Boat Neck</a></li>
+                <li><a href="#">High Neck</a></li>
+                <li><a href="#">Asymmetric</a></li>
+                <li><a href="#">Collar Neck</a></li>
+                <li><a href="#">Peter Pan Collar</a></li>
+                <li><a href="#">Jacket Style</a></li>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <!-- Main Container End -->
+
+ 
+  
+  <!-- Footer -->
+  <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+
+<!-- JS --> 
+
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="/js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="/js/revolution-slider.js"></script> 
+<script type="text/javascript" src="/js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="/js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="/js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="/js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="/js/countdown.js"></script>
+
+<script type="text/javascript" src="/js/app.js"></script> 
+</body>
+
+</html>

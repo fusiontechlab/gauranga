@@ -1,0 +1,253 @@
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar">
+      
+      <!-- sidebar menu-->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="user-profile treeview">
+          <a href="index.html">
+			<img src="/admin/images/user5-128x128.jpg" alt="user">
+            <span></span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+		  <ul class="treeview-menu">
+        <% if (user) { %>
+            <li><a href="javascript:void()"><i class="fa fa-user mr-5"></i><%=user.email%></a></li>
+            <% } else { %>
+              <li><a href="javascript:void()"><i class="fa fa-user mr-5"></i>admin</a></li>
+              <% } %>
+	
+      <li><a href="/loggedadmin"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
+       <li><a href="/admin_changePassword"><i class="fa fa-cog mr-5"></i>Change Password</a></li>
+      <% if (user) { %>
+        <li><a href="/admminLogout"><i class="fa fa-power-off mr-5"></i>Logout</a></li>
+     <% } else { %>
+      <li><a href="/admin"><i class="fa fa-power-off mr-5"></i>Login</a></li>
+     <% } %>
+			
+          </ul>
+        </li>
+        <li class="header nav-small-cap">PERSONAL</li>
+        <li class="active">
+          <a href="/admin/index">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Registered User</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+           
+			<li><a href="/userList"><i class="fa fa-circle-thin"></i>Userlist</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Vendor User</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+           
+			<li><a href="/vendorList"><i class="fa fa-circle-thin"></i>Vendorlist</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-envelope"></i> <span>Categories</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/category"><i class="fa fa-circle-thin"></i>Add Category</a></li>
+            <li><a href="/viewCategory"><i class="fa fa-circle-thin"></i>View Category</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Sub Categories</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/subCategory"><i class="fa fa-circle-thin"></i>Add Sub Category</a></li>
+            <li><a href="/viewSubCategory"><i class="fa fa-circle-thin"></i>View Sub Category</a></li>
+           
+          </ul>
+        </li>
+       
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Products</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/product"><i class="fa fa-circle-thin"></i>Product List</a></li>
+            <li><a href="/add-product"><i class="fa fa-circle-thin"></i>Add Product</a></li>
+
+          </ul>
+        </li>
+       	 <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Ordered </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/orderData"><i class="fa fa-circle-thin"></i>All Ordered List</a></li>
+            <!-- <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-thin"></i>New Order</a></li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-thin"></i>Delivered Order</a></li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-thin"></i>Returnrd Order</a></li>
+           -->
+          </ul>
+        </li>	
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Rating </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/rating"><i class="fa fa-circle-thin"></i>All Rating List</a></li>
+          </ul>
+        </li>	
+		
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>About</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/about"><i class="fa fa-circle-thin"></i>Add About</a></li>
+            <li><a href="/viewAbout"><i class="fa fa-circle-thin"></i>view About</a></li>
+            
+            
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Customer Help</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/viewFaq"><i class="fa fa-circle-thin"></i>View Faq</a></li>
+            <li><a href="/adminFaq"><i class="fa fa-circle-thin"></i>Add Faq</a></li>
+
+            <li><a href="/viewPolicy"><i class="fa fa-circle-thin"></i> View Privacy Policy</a></li>
+            <li><a href="/adminPpolicy"><i class="fa fa-circle-thin"></i>Add Privacy Policy</a></li>
+
+            <li><a href="/viewCondition"><i class="fa fa-circle-thin"></i> View Term & Condition</a></li>
+            <li><a href="/adminCondition"><i class="fa fa-circle-thin"></i>Add Term & Condition</a></li>
+
+            <li><a href="/viewReturn"><i class="fa fa-circle-thin"></i>View Return Policy</a></li>
+            <li><a href="/adminRpolicy"><i class="fa fa-circle-thin"></i>Add Return Policy</a></li>
+
+            <li><a href="/viewCharge"><i class="fa fa-circle-thin"></i>View Delivery Charge</a></li>
+            <li><a href="/adminshipcharge"><i class="fa fa-circle-thin"></i>Add Delivery Charge</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Contact</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          
+            <li><a href="/viewContact"><i class="fa fa-circle-thin"></i>view Contact</a></li>
+            <li><a href="/contactDetail"><i class="fa fa-circle-thin"></i>Add Get In Touch</a></li>
+            <li><a href="/viewContactAddress"><i class="fa fa-circle-thin"></i>View Get In Touch</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Banner</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/banner"><i class="fa fa-circle-thin"></i>Add Banner</a></li>
+           
+            <li><a href="/viewBanner"><i class="fa fa-circle-thin"></i>view Banner</a></li>
+            
+          </ul>
+        </li>
+
+
+        
+          <!-- <ul class="treeview-menu">
+            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-thin"></i>Banner List</a></li>
+            <li><a href="pages/tables/data.html"><i class="fa fa-circle-thin"></i>Add Banner</a></li>
+            <li><a href="pages/tables/editable-tables.html"><i class="fa fa-circle-thin"></i>Web Banner</a></li>
+            
+          </ul> -->
+        <!-- </li> -->
+		
+	
+	       
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-file"></i> <span>Offer Zone</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>+
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/addOffer"><i class="fa fa-circle-thin"></i>Add Offer</a></li>
+            <li><a href="/viewOffer"><i class="fa fa-circle-thin"></i>View Offer</a></li>
+             
+        
+      </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-file"></i> <span>Puja Collection</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-right pull-right"></i>+
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="/addpujaOffer"><i class="fa fa-circle-thin"></i>Add Puja collection Info</a></li>
+          <li><a href="/viewpujaOffer"><i class="fa fa-circle-thin"></i>View Puja collection Info</a></li>
+          <li><a href="/addvidiopara"><i class="fa fa-circle-thin"></i>Add vidio para</a></li>
+          <li><a href="/viewvidiopara"><i class="fa fa-circle-thin"></i>View vidio para</a></li>
+           
+      
+    </ul>
+    </li>
+    </section>
+  </aside>

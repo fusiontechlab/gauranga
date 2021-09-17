@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('common/header.ejs') %> >
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Product filter</title>
+
+<!-- <script src="/js/jquery-1.10.2.min.js"></script> -->
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link href = "/css/jquery-ui.css" rel = "stylesheet">
+<!-- Custom CSS -->
+<link href="/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <%- include('common/nav.ejs') %> 
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+            <li class=""> <a title="Go to Home Page" href="/shop_grid">Blouse</a><span>&raquo;</span></li>
+            <li><strong>Bridal wear</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End -->
+
+  <!-- Main Container -->
+  <div class="main-container col2-left-layout">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-main col-sm-9 col-xs-12 col-sm-push-3">
+          
+          <div class="shop-inner">
+            <div class="banner_box">
+              <img src=""/>
+          </div>
+            <div class="toolbar">
+              <div class="view-mode">
+                <div class="page-title">
+                  <h2>Eithnic Wear</h2>
+                </div>
+              </div>
+              <div class="sorter">
+                <div class="short-by">
+                    <label>Sort By:</label>
+                    <select  id = "sidefilter" class="form-control member_dropdown" >
+                      <!-- <option id="myselect1" name= "one" value="1">popularity</option> -->
+                      <option id="myselect2"  value="lowHigh">low-high</option>
+                      <option id="myselect3"  value="highLow">high-</option>
+                
+                    </select>
+                  </div>
+                <div class="short-by page">
+                  <label>Show:</label>
+                  <select>
+                    <option selected="selected">18</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="filter_data">
+             
+            </div>
+      
+            <div class="pagination-area">
+              <ul>
+                <li><a class="active" href="#">1</a></li>
+                <li><a href="/page/2">2</a></li>
+              
+                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+        <aside class="sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+          <div class="block category-sidebar">
+            <div class="sidebar-title">
+              <h3>Categories</h3>
+            </div>
+            <ul class="product-categories">
+              <li class="cat-item current-cat cat-parent"><a href= "shop_grid.html">Women</a>
+                <ul class="children">
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Accessories</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Dresses</a></li>
+                      <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
+                        <ul  class="children">
+                          <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a></li>
+                          <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Sling bag</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Handbags</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; backpack</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Beaded Handbags</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Fabric Handbags</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Sling bag</a></li>
+                    </ul>
+                  </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Jewellery</a> </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Swimwear</a> </li>
+                </ul>
+              </li>
+              <li class="cat-item cat-parent"><a href="shop_grid.html">Men</a>
+                <ul class="children">
+                  <li class="cat-item cat-parent"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Dresses</a>
+                    <ul class="children">
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Casual</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Designer</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Evening</a></li>
+                      <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Hoodies</a></li>
+                    </ul>
+                  </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Jackets</a> </li>
+                  <li class="cat-item"><a href="shop_grid.html"><i class="fa fa-angle-right"></i>&nbsp; Shoes</a> </li>
+                </ul>
+              </li>
+              <li class="cat-item"><a href="shop_grid.html">Electronics</a></li>
+              <li class="cat-item"><a href="shop_grid.html">Furniture</a></li>
+              <li class="cat-item"><a href="shop_grid.html">KItchen</a></li>
+            </ul>
+          </div>
+          <div class="block shop-by-side">
+            <div class="sidebar-bar-title">
+              <h3>Shop By</h3>
+            </div>
+           
+            <div class="block-content">
+              <div class="layered-Category">
+
+                <h2 class="saider-bar-title">Categories</h2>
+                <% for( let index = 0; index < count.length; index++ ) { %>
+                <div class="layered-content">
+                 
+                  <ul class="custom-control custom-checkbox">
+                    <li>
+                      <div><input type="checkbox" class="common_selector brand" value="<%=count[index].subCategory %>" ><label for="<%=count[index].subCategory %>"><%=count[index].subCategory %><span class="count">( <%=  count[index]. category_info.length %>)</span></label></div>
+                  
+                    </li>
+                              
+                  </ul>
+                
+                </div>
+                <% } %>
+              </div>
+            </form>
+            <div class="color-area">
+              <h2 class="saider-bar-title">Color</h2>
+              <div class="color">
+                <ul>
+                  <li><input type="checkbox" class="common_selector color"  value="black" ><a href="#" style ="border-radius: 33px"></a></li>
+                  <li><input type="checkbox" class="common_selector color" value="red" ><a href="#" style ="border-radius: 33px"></a></li>
+                  <li><input type="checkbox" class="common_selector color" value="yellow" ><a href="#" style ="border-radius: 33px"></a></li>
+                  <li><input type="checkbox" class="common_selector color" value="green" ><a href="#" style ="border-radius: 33px"></a></li>
+                  <li><input type="checkbox" class="common_selector color" value="blue" ><a href="#" style ="border-radius: 33px"></a></li>
+                  <li><input type="checkbox" class="common_selector color" value="white" ><a href="#" style ="border-radius: 33px"></a></li>
+                  
+              
+
+
+                 
+                </ul>
+              </div>
+            </div>
+            
+                <div class="size-area">
+                  <h2 class="saider-bar-title">Size</h2>
+                  <div class="size">
+                    <ul>
+                      <li><div><input type="checkbox" class="common_selector size" value="S" ><label for="S">S</label></div></li>
+                      <li><div><input type="checkbox" class="common_selector size" value="M" ><label for="M">M</label></div></li>
+                      <li><div><input type="checkbox" class="common_selector size" value="L" ><label for="L">L</label></div></li>
+                      <li><div><input type="checkbox" class="common_selector size" value="XL" ><label for="XL">XL</label></div></li>
+                      <li><div><input type="checkbox" class="common_selector size" value="XXL" ><label for="XXL">XXL</label></div></li>
+                      <li><div><input type="checkbox" class="common_selector size" value="XS" ><label for="XS">XS</label></div></li>
+                     
+                     
+                    </ul>
+                  </div>
+                </div>
+              
+            </div>
+          
+          </div>
+       
+          <div id="slider-container"></div>
+
+          <input type="hidden" id="hidden_minimum_price" value="0" />
+          <input type="hidden" id="hidden_maximum_price" value="2000" />
+          <p id="price_show">100 - 2000</p>
+          <div id="price_range"></div>
+      </div>
+          
+          
+          <div id="slider-range"></div>
+          <!-- <div class="block popular-tags-area ">
+            <div class="sidebar-bar-title">
+              <h3>Popular Tags</h3>
+            </div>
+            <div class="tag">
+              <ul>
+                <li><a href="#">Backless</a></li>
+                <li><a href="#">Halter Neck</a></li>
+                <li><a href="#">Boat Neck</a></li>
+                <li><a href="#">High Neck</a></li>
+                <li><a href="#">Asymmetric</a></li>
+                <li><a href="#">Collar Neck</a></li>
+                <li><a href="#">Peter Pan Collar</a></li>
+                <li><a href="#">Jacket Style</a></li>
+            </div>
+          </div> -->
+        </aside>
+      </div>
+    </div>
+  </div>
+  <!-- Main Container End -->
+
+ 
+  
+  <!-- Footer -->
+ <%- include('common/footer') %> 
+  <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a> 
+  
+  <!-- End Footer --> 
+</div>
+
+<!-- JS --> 
+
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script> 
+
+<!-- bootstrap js --> 
+<script type="text/javascript" src="/js/bootstrap.min.js"></script> 
+<!-- Slider Js --> 
+<script type="text/javascript" src="/js/revolution-slider.js"></script> 
+<script type="text/javascript" src="/js/revolution-extension.js"></script> 
+<!-- owl.carousel.min js --> 
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script> 
+
+<!-- jquery.mobile-menu js --> 
+<script type="text/javascript" src="/js/mobile-menu.js"></script> 
+
+<!--jquery-ui.min js --> 
+<script type="text/javascript" src="/js/jquery-ui.js"></script> 
+
+<!-- main js --> 
+<script type="text/javascript" src="/js/main.js"></script> 
+
+<!-- countdown js --> 
+<script type="text/javascript" src="/js/countdown.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+</body>
+<script>
+  $(document).ready(function(){
+    $("#sidefilter").change(function() {
+            var myfilter = $('#sidefilter').val();
+         alert(myfilter);
+          
+         $.ajax({
+          type: "GET",
+          url: "/filter",
+          dataType:"jsonp",
+          data: { myfilter:myfilter},
+          success: function(data) {
+            console.log(data);
+              // alert('it worked');
+              $('.filter_data ').empty();
+              $('.filter_data').html(data);
+
+
+            
+          // var custList = "";
+          $.each(data, function(i, customer){
+            $('.filter_data ').append(`<ul class="products-grid"  >
+              <li class="item col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                
+                <div class="product-item">
+                        <div class="item-inner">
+                          <div class="product-thumbnail">
+                            <div class="pr-img-area"> <a title="" href="/single_product/${customer.id}">
+                              <figure> <img class="first-img" src="${customer.image[0]} " alt=" "> <img class="hover-img" src="${customer.image[1]} " alt=" "></figure>
+                              </a> 
+                              </div>
+                              <div class="pr-info-area">
+                              <div class="pr-button">
+                               
+                                  <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/${customer.id}"> <i class="pe-7s-like"></i> </a> </div>
+                               
+               
+                                 
+                               
+                                <div class="mt-button add_to_compare"> <a href="/single_product/${customer.id}"> <i class="fa fa-eye"></i> </a> </div>
+                              </div>
+                            </div>  
+                            <div class="item-info">
+                            <div class="info-inner">
+                              <div class="item-title"> <a title="Product title here">${customer.title}<span>#(${customer.code})</span> </a> </div>
+                              
+                              <div class="item-content">
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price"><i class="fa fa-rupee"></i>${customer.price}  </span> </span> </div>
+                                </div>
+                                <div class="pro-action">
+                                  <a href="/cart/add/${customer.id}"><button type="button" class="add-to-cart"> <i class="fa fa-shopping-bag"></i><span> Add to Cart</span> </button></a>
+                                
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+              
+              </div>
+            </div>
+          </div>
+
+          
+              </li>
+              </ul>`)
+            })
+           
+          },
+          error: function() {
+              // alert('it broke');
+          },
+          complete: function() {
+              // alert('it completed');
+          }
+          
+      
+    })
+          })
+      filter_data();
+  
+      function filter_data()
+      {
+          $('.filter_data').html('<div id="loading" style="" ></div>');
+          var action = 'fetch_data';
+          var minimum_price = $('#hidden_minimum_price').val();
+          var size =  get_filter('size');
+          var colorData = get_filter('color');
+       
+          var maximum_price = $('#hidden_maximum_price').val();
+          var brand = get_filter('brand');
+         
+
+        
+      
+         
+          $.ajax({
+          type: "GET",
+          url: "/filter",
+          dataType:"jsonp",
+          data: { checked : brand ,minimum_price:minimum_price, maximum_price:maximum_price ,size,colorData },
+          success: function(data) {
+            console.log(data);
+              // alert('it worked');
+              $('.filter_data ').empty();
+              $('.filter_data').html(data);
+
+
+            
+          // var custList = "";
+          $.each(data, function(i, customer){
+            $('.filter_data ').append(`<ul class="products-grid"  >
+              <li class="item col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                
+                <div class="product-item">
+                        <div class="item-inner">
+                          <div class="product-thumbnail">
+                            <div class="pr-img-area"> <a title="" href="/single_product/${customer.id}">
+                              <figure> <img class="first-img" src="${customer.image[0]} " alt=" "> <img class="hover-img" src="${customer.image[1]} " alt=" "></figure>
+                              </a> 
+                              </div>
+                              <div class="pr-info-area">
+                              <div class="pr-button">
+                               
+                                  <div class="mt-button add_to_wishlist"> <a href="/wishlist/add/${customer.id}"> <i class="pe-7s-like"></i> </a> </div>
+                               
+               
+                                 
+                               
+                                <div class="mt-button add_to_compare"> <a href="/single_product/${customer.id}"> <i class="fa fa-eye"></i> </a> </div>
+                              </div>
+                            </div>  
+                            <div class="item-info">
+                            <div class="info-inner">
+                              <div class="item-title"> <a title="Product title here">${customer.title}<span>#(${customer.code})</span> </a> </div>
+                              
+                              <div class="item-content">
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price"><i class="fa fa-rupee"></i>${customer.price}  </span> </span> </div>
+                                </div>
+                                <div class="pro-action">
+                                  <a href="/cart/add/${customer.id}"><button type="button" class="add-to-cart"> <i class="fa fa-shopping-bag"></i><span> Add to Cart</span> </button></a>
+                                
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+              
+              </div>
+            </div>
+          </div>
+
+          
+              </li>
+              </ul>`)
+            })
+           
+          },
+          error: function() {
+              // alert('it broke');
+          },
+          complete: function() {
+              // alert('it completed');
+          }
+          
+      
+    })
+      
+          
+      }
+    
+  
+      function get_filter(brand)
+      {
+          var filter = [];
+          $('.'+brand+':checked').each(function(){
+              filter.push($(this).val());
+          });
+         
+          return filter;
+  
+      }
+      function get_filter(size)
+      {
+          var filter = [];
+          $('.'+size+':checked').each(function(){
+              filter.push($(this).val());
+          });
+         
+          return filter;
+  
+      }
+  
+      $('.common_selector').click(function(){
+          filter_data();
+      });
+  
+      $('#price_range').slider({
+          range:true,
+          min:100,
+          max:2000,
+          values:[100, 2000],
+          step:100,
+          stop:function(event, ui)
+          {
+              $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+              $('#hidden_minimum_price').val(ui.values[0]);
+              $('#hidden_maximum_price').val(ui.values[1]);
+              filter_data();
+          }
+      });
+  
+  });
+  </script>
+
+</html>

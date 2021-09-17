@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include('common/head/head.ejs') %>
+
+  <body class="hold-transition skin-yellow sidebar-mini">
+    <div class="wrapper">
+      <%- include('common/header/header.ejs') %>
+
+        <%- include('common/sidebar/sidebar.ejs') %>
+          <section class="content-header">
+            <h1>
+              Dashboard
+
+            </h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/admin/index"><i class="fa fa-dashboard"></i> Home</a>
+              </li>
+              <li class="breadcrumb-item active"> <% if(editable) {%> Edit-<%= title %> <% }else {%><%= title %> <%}%></li>
+            </ol>
+          </section>
+
+          <div class="content-wrapper">
+            <section class="content">
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="content-header" style="background-color:#EEEEEE;">
+                      <i class="fa fa-external-link-square"></i>
+                      
+                      <% if(editable) {%> Edit-<%= title %>  <% }else {%>Add-<%= title %> <%}%>
+                      <div class="panel-tools">
+
+                      </div>
+                    </div>
+
+                    <div class="panel-body">
+                      <form action="<% if(editable) {%> /privacy_update <% }else {%>/postprivacy<%}%>" method="post"
+                        enctype="<% if(editable) {%> /multipart/form-data <% }else {%><%}%>">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label">
+                                Heading <span class="symbol required"></span>
+                              </label>
+                              <input type="text" placeholder="Insert title" class="form-control"
+                                value="<% if(editable) {%> <%=data.heading%> <%} %>" name="heading" required>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label class="control-label">
+                                Privacy Policy  <span class="symbol required"></span>
+                              </label>
+                            </div>
+                              <textarea name="privacydata" cols="88" rows="10" required
+                               placeholder="Insert privacy policy data"><% if(editable) {%> <%=data.privacydata%> <%} %></textarea>
+
+<!-- 
+                            <input type="text" placeholder="Insert heading" class="form-control"
+                            value="<% if(editable) {%> <%=data.privacydata%> <%} %>" name="privacydata" required> -->
+                          
+                            <div class="row">
+                              <div class="col-md-4">
+                                <input type="hidden" name="id" value="<%if(editable){%><%=data._id%><%}%>">
+                                <% if(editable) {%>
+
+                                  <button class="btn btn-yellow btn-block" type="submit">
+                                    Update <i class="fa fa-arrow-circle-right"></i>
+                                  </button>
+                                  <% }else {%>
+                                    <button class="btn btn-yellow btn-block" type="submit">
+                                      Add-Privacy Detail <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                    <%}%>
+
+                              </div>
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </section>
+
+          </div>
+
+
+
+          <!-- jQuery 3 -->
+          <script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+
+          <!-- popper -->
+          <script src="/admin/assets/vendor_components/popper/distest/popper.min.js"></script>
+
+          <!-- Bootstrap 4.0-->
+          <script src="/admin/assets/vendor_components/bootstrap/distest/js/bootstrap.js"></script>
+
+          <!-- webticker -->
+          <script src="/admin/assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js"></script>
+
+          <!--amcharts charts -->
+          <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+          <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+          <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+          <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+          <!-- This is data table -->
+          <script src="/admin/assets/vendor_components/datatable/datatables.min.js"></script>
+
+          <!-- Slimscroll -->
+          <script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+          <!-- FastClick -->
+          <script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+
+          <!-- Fab Admin App -->
+          <script src="/admin/cryptocurrency/js/template.js"></script>
+
+          <!-- Fab Admin dashboard demo (This is only for demo purposes) -->
+          <script src="/admin/cryptocurrency/js/pages/dashboard.js"></script>
+
+          <!-- Fab Admin for demo purposes -->
+          <script src="/admin/cryptocurrency/js/demo.js"></script>
+
+  </body>
+
+</html>
